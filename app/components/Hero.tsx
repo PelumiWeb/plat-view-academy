@@ -1,7 +1,57 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    // Target date: March 2, 2026
+    const targetDate = new Date("2026-03-02T00:00:00").getTime();
+
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (difference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        // Training has started
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    // Calculate immediately
+    calculateTimeLeft();
+
+    // Update every second
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    // Cleanup
+    return () => clearInterval(timer);
+  }, []);
+
+  const countdownData = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
+  ];
+
   return (
     <div className="min-h-screen lg:h-180 flex flex-col lg:flex-row items-start justify-between p-4 md:p-6 lg:p-4 relative">
       {/* Hero Left */}
@@ -9,7 +59,6 @@ const Hero = () => {
         <p className="text-primary-green text-sm md:text-base">
           PLATVIEW ACADEMY
         </p>
-
         <div className="mt-4">
           <p className="font-sans font-bold text-3xl md:text-5xl lg:text-[65px] leading-tight lg:leading-17.25 text-[#292663] max-w-full lg:w-175">
             Pays From Day One
@@ -22,40 +71,32 @@ const Hero = () => {
             zero to job-ready.
           </p>
         </div>
-
         <div className="flex flex-col sm:flex-row gap-4 sm:space-x-0 sm:gap-4 mt-6 md:mt-8">
-          <button className="bg-[#292663] text-white rounded-[7px] text-base md:text-[18px] font-bold font-sans h-12 md:h-15.5 uppercase text-center py-2 px-4 md:px-6 w-full sm:w-auto">
+          <button className="bg-[#292663] text-white rounded-[7px] text-base md:text-[18px] font-bold font-sans h-12 md:h-15.5 uppercase text-center py-2 px-4 md:px-6 w-full sm:w-auto hover:bg-opacity-90 transition-opacity">
             Register Now
           </button>
-          <button className="rounded-[7px] text-base md:text-[18px] font-bold font-sans h-12 md:h-15.5 uppercase text-center py-2 px-4 md:px-6 border border-[#0022D4] text-[#0022D4] w-full sm:w-auto">
+          <button className="rounded-[7px] text-base md:text-[18px] font-bold font-sans h-12 md:h-15.5 uppercase text-center py-2 px-4 md:px-6 border border-[#0022D4] text-[#0022D4] w-full sm:w-auto hover:bg-[#0022D4] hover:text-white transition-colors">
             CONTACT US
           </button>
         </div>
-
         <div className="mt-6 md:mt-8">
           <p className="font-sans font-normal text-lg md:text-[20px] leading-relaxed lg:leading-9.25 text-[#000000]">
             Training starts March 2, 2026
           </p>
           <div className="flex items-center gap-3 md:gap-4 mt-4">
-            {[
-              { label: "Days", value: "90" },
-              { label: "Hours", value: "90" },
-              { label: "Minutes", value: "90" },
-              { label: "Seconds", value: "90" },
-            ].map((data, index) => (
+            {countdownData.map((data, index) => (
               <div key={index} className="flex flex-col items-center">
                 <p className="font-normal font-poppins text-[10px] md:text-xs text-[#292663]">
                   {data.label}
                 </p>
-                <p className="font-normal font-poppins text-2xl md:text-3xl lg:text-[40px] text-[#4D4C59]">
-                  {data.value}
+                <p className="font-normal font-poppins text-2xl md:text-3xl lg:text-[40px] text-[#4D4C59] tabular-nums">
+                  {data.value.toString().padStart(2, "0")}
                 </p>
               </div>
             ))}
           </div>
         </div>
       </div>
-
       {/* Hero Right */}
       <div className="w-full lg:w-[45%] relative z-10 mt-8 lg:mt-0 flex justify-center lg:justify-end">
         <div className="relative w-full max-w-md lg:max-w-none lg:w-auto">
@@ -68,7 +109,6 @@ const Hero = () => {
           />
         </div>
       </div>
-
       {/* Background Vector */}
       <div className="absolute inset-x-0 bottom-0 h-180 pointer-events-none z-0">
         <Image
