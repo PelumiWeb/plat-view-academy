@@ -1,0 +1,69 @@
+import Image from "next/image";
+import React from "react";
+
+const GainComponent = () => {
+  return (
+    <div className="bg-[#0022D4] min-h-screen lg:h-168.75 w-full flex flex-col lg:flex-row items-center justify-between text-center px-4 md:px-8 lg:px-16 py-12 lg:py-0 gap-8 lg:gap-12">
+      {/* Content Section */}
+      <div className="flex flex-col items-start w-full lg:w-1/2">
+        <h2 className="font-bold text-3xl md:text-4xl lg:text-[48px] text-white leading-tight lg:leading-14.75 font-sans text-left">
+          What You'll Gain
+        </h2>
+
+        <ul className="list-disc text-white w-full lg:w-[75%] my-6 md:my-8 lg:my-4 pl-5 md:pl-6 space-y-3 md:space-y-2">
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Understand the fundamentals of cybersecurity concepts and
+              frameworks
+            </p>
+          </li>
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Identify and mitigate common cyber threats and vulnerabilities
+            </p>
+          </li>
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Apply security principles across networks, systems, and users
+            </p>
+          </li>
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Use basic cybersecurity tools and defensive mechanisms
+            </p>
+          </li>
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Develop cybersecurity policies and incident response procedures
+            </p>
+          </li>
+          <li>
+            <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
+              Prepare for entry-level certifications such as CompTIA Security+,
+              CEH, and CISSP foundations
+            </p>
+          </li>
+        </ul>
+
+        <button className="bg-[#F2F2FE] w-full sm:w-auto sm:px-8 md:w-53.5 h-12 md:h-15.5 border-none rounded-[7px] text-[#292663] font-bold font-sans uppercase text-sm md:text-base">
+          register now
+        </button>
+      </div>
+
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center">
+        <div className="relative w-full max-w-lg lg:max-w-none">
+          <Image
+            src="/Gain.svg"
+            alt="Cybersecurity training illustration"
+            width={697}
+            height={462}
+            className="w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GainComponent;
