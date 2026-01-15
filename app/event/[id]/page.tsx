@@ -1,8 +1,9 @@
-"use client"
+"use client";
+
+import { useFetch } from "@/app/useFetch";
 import Image from "next/image";
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
-import { useFetch } from "../useFetch";
+import toast from "react-hot-toast";
 
 function Page() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,14 @@ function Page() {
     lastName: "",
     phone: "",
     email: "",
+    webinarId: "",
   });
 
-  const { loading, post } = useFetch();
+  const { loading, error, post } = useFetch();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -24,7 +28,7 @@ function Page() {
 
   const handleContinue = async () => {
     // Validation
-    if (!formData.firstName || !formData.phone) {
+    if (!formData.firstName || !formData.phone || !formData.webinarId) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -35,10 +39,11 @@ function Page() {
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
+        courseId: parseInt(formData.webinarId),
       };
 
       const response = await post(
-        "https://platview-backend.onrender.com/api/registration/course",
+        "https://platview-backend.onrender.com/api/registration/webinar",
         requestBody
       );
       toast.success("Registration successful!");
@@ -49,6 +54,7 @@ function Page() {
         lastName: "",
         phone: "",
         email: "",
+        webinarId: "",
       });
     } catch (err) {
       toast.error(
@@ -65,8 +71,8 @@ function Page() {
         {/* Header */}
         <div className="w-full flex justify-center items-center mb-6 sm:mb-8">
           <p className="font-inter font-bold text-xl sm:text-2xl md:text-3xl lg:text-[30px] leading-tight sm:leading-normal lg:leading-8.5 text-[#000000] text-center w-full sm:w-[80%] lg:w-[60%]">
-            <span className="text-[#0022D4]">Register</span> for the Zero to
-            Hero Cybersecurity Program
+            <span className="text-[#0022D4]">Register </span>
+            for our upcoming events
           </p>
         </div>
 
@@ -116,7 +122,21 @@ function Page() {
                 className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
               />
             </div>
+
+            <div className="flex w-full justify-center items-center">
+              <select
+                name="webinarId"
+                value={formData.webinarId}
+                onChange={handleInputChange}
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors">
+                <option value="">Select Event</option>
+                <option value="1">Event 1</option>
+                <option value="2">Event 2</option>
+                <option value="3">Event 3</option>
+              </select>
+            </div>
           </div>
+
         </div>
 
         {/* Buttons */}

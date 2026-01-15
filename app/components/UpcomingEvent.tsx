@@ -1,7 +1,36 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+import { useFetch } from "../useFetch";
 
-const EventCard = () => {
+// {
+//   "id": 1,
+//   "topic": "Webinar 1 Topic",
+//   "description": "Build in-demand skills early and gain hands-on experience that gives you a strong career advantage.",
+//   "start_date": "2026-01-20T00:00:00.000Z",
+//   "start_time": "17:00:00",
+//   "location": "Platview Instagram Live | @platviewtech",
+//   "is_active": true,
+//   "max_attendees": 100,
+//   "current_attendees": 0,
+//   "created_at": "2026-01-13T19:44:07.661Z",
+//   "updated_at": "2026-01-13T19:44:07.661Z"
+// },
+
+const EventCard = (data: {
+  topic: string;
+  description: string;
+  location: string;
+  start_date: string;
+  start_time: string;
+}) => {
+  console.log(data, "from component");
+
+  const date = new Date(data.start_date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   return (
     <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6 my-4 md:my-5 p-4 md:p-0">
       {/* Image Section */}
@@ -20,11 +49,10 @@ const EventCard = () => {
       <div className="w-full md:w-[60%] lg:w-[60%]">
         <div>
           <h2 className="text-[#292663] font-bold leading-tight lg:leading-14.75 text-xl sm:text-2xl lg:text-[28px] text-left font-sans mb-2 sm:mb-3">
-            Webinar 1 Topic
+            {data.topic}
           </h2>
           <p className="font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663]">
-            Build in-demand skills early and gain hands-on experience that gives
-            you a strong career advantage.
+            {data.description}
           </p>
         </div>
 
@@ -33,11 +61,11 @@ const EventCard = () => {
           {/* Icons Section */}
           <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-0 w-full sm:w-auto">
             <div className="flex flex-col  gap-1 sm:gap-0">
-              <IconComponent image="/Icon.png" text="January 20th, 2026" />
-              <IconComponent image="/Icon2.png" text="5:00PM" />
+              <IconComponent image="/Icon.png" text={date} />
+              <IconComponent image="/Icon2.png" text={data.start_time} />
             </div>
             <div>
-              <IconComponent image="/Icon3.png" text="Platview LinkedIn Live" />
+              <IconComponent image="/Icon3.png" text={data.location} />
             </div>
           </div>
 
@@ -72,6 +100,22 @@ const IconComponent = ({ image, text }: Props) => {
 };
 
 function UpcomingEvent() {
+  const { data, error, loading, get } = useFetch();
+
+  const fetchEvent = async () => {
+    try {
+      const users = await get(
+        "https://platview-backend.onrender.com/api/registration/webinars"
+      );
+      console.log(users);
+    } catch (err) {
+      console.error("Failed to fetch users");
+    }
+  };
+
+  useEffect(() => {
+    fetchEvent();
+  }, []);
   return (
     <div className="px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16">
       <h2 className="text-[#292663] font-bold leading-tight lg:leading-14.75 text-xl sm:text-2xl lg:text-[28px] text-left font-sans mb-6 sm:mb-8">
@@ -79,12 +123,9 @@ function UpcomingEvent() {
       </h2>
 
       <div className="space-y-6 sm:space-y-8 lg:space-y-0">
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
-        <EventCard />
+        {data?.data?.map((data: any) => {
+          return <EventCard {...data} />;
+        })}
       </div>
     </div>
   );

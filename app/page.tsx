@@ -13,15 +13,41 @@ import Contact from "./components/Contact";
 export default function Home() {
   return (
     <div className="">
-      <Hero />
-      <Banner />
-      <About />
-      <GainComponent />
-      <ProgramContent />
-      <ProgramFormDetails />
-      <UpcomingEvent />
-      <WhyChoose />
-      <Contact />
+      <section id="home">
+        <Hero />
+      </section>
+
+      <section id="banner">
+        <Banner />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="academy">
+        <GainComponent />
+      </section>
+
+      <section id="program">
+        <ProgramContent />
+      </section>
+
+      <section id="program-details">
+        <ProgramFormDetails />
+      </section>
+
+      <section id="events">
+        <UpcomingEvent />
+      </section>
+
+      <section id="why">
+        <WhyChoose />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Heder";
+import { Toaster } from "react-hot-toast";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +51,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen w-screen bg-white">
           <Header />
           {children}
+          <Toaster position="top-right" />
         </div>
       </body>
     </html>

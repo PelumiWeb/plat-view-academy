@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type ProgramFormTypes = {
@@ -30,6 +32,7 @@ const ProgramFormCard = (props: ProgramFormTypes) => {
 };
 
 function ProgramFormDetails() {
+  const router = useRouter();
   return (
     <div className="bg-[#0E95470D] min-h-screen lg:h-308 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 relative overflow-hidden">
       <div className="relative z-10">
@@ -60,9 +63,17 @@ function ProgramFormDetails() {
               <p className="text-xl sm:text-2xl lg:text-[32px] font-semibold leading-tight lg:leading-9.75 font-sans text-[#0022D4] text-center">
                 Training Fee
               </p>
-              <p className="font-sans font-bold text-4xl sm:text-5xl lg:text-[64px] leading-tight lg:leading-9 text-[#292663] text-center">
+              <p className="font-sans font-bold text-4xl sm:text-5xl lg:text-[64px] leading-tight lg:leading-9 text-[#292663] text-center my-4">
                 ₦150,000
               </p>
+
+              <div className="w-full sm:w-auto mt-4">
+                <button
+                  className="w-full sm:w-auto min-w-35 h-12 sm:h-13.75 bg-[#0E9547] uppercase rounded-[7px] border-none px-4 sm:px-6 py-2 sm:py-2.25 text-white font-bold text-sm sm:text-[16px] cursor-pointer"
+                  onClick={() => router.push("/register")}>
+                  register
+                </button>
+              </div>
             </div>
           </div>
         </div>
