@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { useFetch } from "../useFetch";
+import { useRouter } from "next/navigation";
 
 // {
 //   "id": 1,
@@ -23,8 +24,10 @@ const EventCard = (data: {
   location: string;
   start_date: string;
   start_time: string;
+  id: string | number;
 }) => {
   console.log(data, "from component");
+  const router = useRouter();
 
   const date = new Date(data.start_date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -71,7 +74,11 @@ const EventCard = (data: {
 
           {/* Button */}
           <div className="w-full sm:w-auto">
-            <button className="w-full sm:w-auto min-w-35 h-12 sm:h-13.75 bg-[#0E9547] uppercase rounded-[7px] border-none px-4 sm:px-6 py-2 sm:py-2.25 text-white font-bold text-sm sm:text-[16px]">
+            <button
+              className="w-full sm:w-auto min-w-35 h-12 sm:h-13.75 bg-[#0E9547] uppercase rounded-[7px] border-none px-4 sm:px-6 py-2 sm:py-2.25 text-white font-bold text-sm sm:text-[16px]"
+              onClick={() => {
+                router.push(`event/${data.id}`);
+              }}>
               register
             </button>
           </div>

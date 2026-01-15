@@ -2,16 +2,20 @@
 
 import { useFetch } from "@/app/useFetch";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 function Page() {
+  const route = useRouter();
+  const params: any = useParams();
+
+  console.log(params, "here is the route");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     phone: "",
     email: "",
-    webinarId: "",
   });
 
   const { loading, error, post } = useFetch();
@@ -28,7 +32,7 @@ function Page() {
 
   const handleContinue = async () => {
     // Validation
-    if (!formData.firstName || !formData.phone || !formData.webinarId) {
+    if (!formData.firstName || !formData.phone) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -39,7 +43,7 @@ function Page() {
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
-        courseId: parseInt(formData.webinarId),
+        webinarId: parseInt(params?.id),
       };
 
       const response = await post(
@@ -54,8 +58,23 @@ function Page() {
         lastName: "",
         phone: "",
         email: "",
-        webinarId: "",
       });
+
+      const paymentResponse = await post(
+        "https://platview-backend.onrender.com/api/payment/initialize",
+        {
+          registrationId: response.data.id, // Assuming the registration returns an id
+        }
+      );
+
+      if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
+        toast.success("Redirecting to payment...");
+
+        // Redirect to Paystack payment page
+        window.location.href = paymentResponse.data.authorizationUrl;
+      } else {
+        toast.error("Payment initialization failed. Please try again.");
+      }
     } catch (err) {
       toast.error(
         err instanceof Error
@@ -123,7 +142,7 @@ function Page() {
               />
             </div>
 
-            <div className="flex w-full justify-center items-center">
+            {/* <div className="flex w-full justify-center items-center">
               <select
                 name="webinarId"
                 value={formData.webinarId}
@@ -134,9 +153,8 @@ function Page() {
                 <option value="2">Event 2</option>
                 <option value="3">Event 3</option>
               </select>
-            </div>
+            </div> */}
           </div>
-
         </div>
 
         {/* Buttons */}
