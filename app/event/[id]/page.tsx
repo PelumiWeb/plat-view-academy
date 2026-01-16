@@ -63,7 +63,7 @@ function Page() {
       const paymentResponse = await post(
         "https://platview-backend.onrender.com/api/payment/initialize",
         {
-          registrationId: response.data.id, // Assuming the registration returns an id
+          registrationId: response.data.webinarId, // Assuming the registration returns an id
         }
       );
 

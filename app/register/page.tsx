@@ -35,6 +35,7 @@ function Page() {
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
+        courseId: 1,
       };
 
       const response = await post(
@@ -43,6 +44,25 @@ function Page() {
       );
       toast.success("Registration successful!");
 
+      console.log(response, 'response')
+
+
+      const paymentResponse = await post(
+        "https://platview-backend.onrender.com/api/payment/initialize",
+        {
+          registrationId: response.data.registrationId, 
+        }
+      );
+      
+            if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
+              toast.success("Redirecting to payment...");
+      
+              // Redirect to Paystack payment page
+              window.location.href = paymentResponse.data.authorizationUrl;
+            } else {
+              toast.error("Payment initialization failed. Please try again.");
+            }
+
       // Reset form after successful submission
       setFormData({
         firstName: "",
@@ -50,6 +70,8 @@ function Page() {
         phone: "",
         email: "",
       });
+
+
     } catch (err) {
       toast.error(
         err instanceof Error
