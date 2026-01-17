@@ -1,7 +1,84 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast"; // or your toast library
+import { useFetch } from "../useFetch";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    jobTitle: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const { loading, error, post } = useFetch();
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    // Validation
+    if (!formData.firstName || !formData.email || !formData.message) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    try {
+      const requestBody = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        jobTitle: formData.jobTitle,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        businessGoals: formData.message, // Mapping message to businessGoals
+      };
+
+      const response = await post(
+        "https://platview-backend.onrender.com/api/contact",
+        requestBody
+      );
+
+      if (response.success) {
+        toast.success(response.message || "Message sent successfully!");
+        // Reset form after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          jobTitle: "",
+          company: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+    } catch (err) {
+      toast.error(
+        err instanceof Error
+          ? err.message
+          : "Failed to send message. Please try again."
+      );
+    }
+  };
+
   return (
     <div>
       {/* Catch us on Socials */}
@@ -67,42 +144,60 @@ function Contact() {
           {/* Form */}
           <div className="w-full lg:w-132.25 static lg:absolute lg:right-[10%] lg:top-[20%] p-6 sm:p-8 lg:p-0 space-y-3 sm:space-y-4 lg:space-y-2">
             {/* First Name & Last Name */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2 justify-between">
               <input
                 type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
                 placeholder="First Name"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
                 placeholder="Last Name"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
             </div>
 
             {/* Job Title & Company */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2  justify-between  ">
               <input
                 type="text"
+                name="jobTitle"
+                value={formData.jobTitle}
+                onChange={handleInputChange}
                 placeholder="Job Title"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="text"
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
                 placeholder="Company"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
             </div>
 
             {/* Email & Phone */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-2">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2">
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="Email"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 placeholder="Phone"
                 className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
@@ -110,13 +205,19 @@ function Contact() {
 
             {/* Message Textarea */}
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
               placeholder="Message"
-              className="bg-white text-black placeholder:text-[#0000004D] p-3 sm:p-4 border-none cursor-pointer w-full h-32 sm:h-36 lg:h-41 outline-none rounded shadow-sm resize-none"
+              className="bg-white text-black placeholder:text-[#0000004D] p-3 sm:p-4 border-none cursor-pointer w-full  h-32 sm:h-36 lg:h-41 outline-none rounded shadow-sm resize-none"
             />
 
             {/* Submit Button */}
-            <button className="w-full sm:w-auto bg-[#292663] text-white px-8 py-3 rounded font-bold uppercase hover:bg-opacity-90 transition-opacity">
-              Send Message
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="w-full sm:w-auto bg-[#292663] text-white px-8 py-3 rounded font-bold uppercase hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </div>
         </div>

@@ -5,20 +5,19 @@ function About() {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:h-141 px-4 md:px-8 lg:px-4 py-12 lg:py-0 gap-8 lg:gap-12">
       {/* Image Section */}
-      <div className="w-full lg:w-[45%] flex justify-center items-center">
-        <div className="relative w-full max-w-md lg:max-w-none">
+      <div className="w-full lg:w-[50%] flex justify-center items-center">
+        <div className="relative  w-180.75  h-120">
           <Image
             src="/aboutImage.svg"
             alt="About Image"
-            width={600}
-            height={584}
-            className="object-cover w-full h-auto"
+            fill
+            className="object-contain "
           />
         </div>
       </div>
 
       {/* Content Section */}
-      <div className="w-full lg:w-[45%] max-w-2xl lg:max-w-none">
+      <div className="w-full lg:w-[45%] max-w-2xl lg:max-w-none -mt-10">
         <h1 className="font-sans font-bold text-3xl md:text-4xl lg:text-[48px] leading-tight lg:leading-14.75 text-[#292663]">
           About the Zero to Hero Cybersecurity Program
         </h1>

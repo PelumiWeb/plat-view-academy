@@ -39,7 +39,7 @@ function Banner() {
           {partners.map((partner, index) => (
             <div
               key={`${partner.name}-2-${index}`}
-              className="mx-4 sm:mx-6 md:mx-8 lg:mx-4 flex-shrink-0">
+              className="mx-4 sm:mx-6 md:mx-8 lg:mx-4 shrink-0">
               <div className="relative h-12 w-24 sm:h-14 sm:w-28 md:h-16 md:w-32 lg:h-20 lg:w-40">
                 <Image
                   src={partner.src}

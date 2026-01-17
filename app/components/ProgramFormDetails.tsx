@@ -20,7 +20,7 @@ const card = [
 
 const ProgramFormCard = (props: ProgramFormTypes) => {
   return (
-    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-151 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 m-2 sm:m-3 lg:m-4 p-4 cursor-pointer transition-all">
+    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-151 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 my-4 p-4 cursor-pointer transition-all">
       <p className="text-xl sm:text-2xl lg:text-[32px] font-semibold leading-tight lg:leading-9.75 font-sans text-[#0022D4] text-center">
         {props.title}
       </p>
@@ -40,7 +40,7 @@ function ProgramFormDetails() {
           Program Format & Details
         </h2>
 
-        <div className="mt-4 sm:mt-6 lg:mt-8 flex flex-wrap justify-center items-stretch gap-y-4 sm:gap-y-6">
+        <div className="mt-4 sm:mt-6 lg:mt-8 flex flex-wrap justify-center  md:justify-between items-stretch">
           {card.map((data, index) => (
             <ProgramFormCard key={index} {...data} />
           ))}
