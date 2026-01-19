@@ -60,21 +60,7 @@ function Page() {
         email: "",
       });
 
-      const paymentResponse = await post(
-        "https://platview-backend.onrender.com/api/payment/initialize",
-        {
-          registrationId: response.data.webinarId, // Assuming the registration returns an id
-        }
-      );
-
-      if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
-        toast.success("Redirecting to payment...");
-
-        // Redirect to Paystack payment page
-        window.location.href = paymentResponse.data.authorizationUrl;
-      } else {
-        toast.error("Payment initialization failed. Please try again.");
-      }
+    
     } catch (err) {
       toast.error(
         err instanceof Error
