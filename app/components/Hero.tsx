@@ -69,7 +69,8 @@ const Hero = () => {
             <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#292663] w-full md:w-175">
               Start Your
             </h1>
-            <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[59px] leading-tight text-[#0022D4] mt-1 sm:mt-2 w-full md:w-175">
+            {/* text-[#0022D4] */}
+            <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#0022D4] w-full md:w-175">
               Zero to Hero <span className="text-[#292663]">Journey</span>
             </h2>
             <p className="font-sans font-normal text-sm sm:text-base md:text-lg lg:text-xl xl:text-[22px] leading-relaxed text-black mt-4 sm:mt-5 md:mt-6 max-w-2xl">
@@ -77,14 +78,27 @@ const Hero = () => {
               from zero to job-ready.
             </p>
           </div>
+          <div className="relative w-full max-w-100 sm:max-w-125 md:max-w-150 lg:hidden mx-auto flex justify-center">
+            <div className="relative w-full aspect-5/5 sm:aspect-3/4 flex items-center justify-center">
+              <Image
+                src="/PlatviewGuy.svg"
+                alt="Cybersecurity professional illustration"
+                fill
+                className="object-contain"
+                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, 600px"
+                priority
+              />
+            </div>
+          </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-7 md:mt-8">
+          <div className="flex flex-row gap-3 sm:gap-4 mt-6 sm:mt-7 md:mt-8">
             <button
               className="bg-[#292663] text-white rounded-[7px] text-sm sm:text-base md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 w-full sm:w-auto hover:bg-opacity-90 transition-opacity
               
               cursor-pointer"
-              onClick={(e) => handleNavClick(e, "#program-details", router)}>
+              onClick={(e) => handleNavClick(e, "#program-details", router)}
+              >
               Register Now
             </button>
             <button
@@ -119,7 +133,7 @@ const Hero = () => {
         {/* Hero Right - Image */}
         <div className="w-full lg:w-[45%] xl:w-[50%] relative mt-10 sm:mt-12 lg:mt-0 flex justify-center lg:justify-end">
           {/* Mobile & Tablet */}
-          <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:hidden">
+          {/* <div className="relative w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:hidden">
             <div className="relative w-full aspect-[4/5] sm:aspect-[3/4]">
               <Image
                 src="/PlatviewGuy.svg"
@@ -130,7 +144,7 @@ const Hero = () => {
                 priority
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Desktop */}
           <div className="hidden lg:block relative w-full">

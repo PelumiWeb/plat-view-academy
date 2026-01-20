@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useFetch } from "../useFetch";
+import { useRouter } from "next/navigation";
 
 function Page() {
   const [formData, setFormData] = useState({
@@ -13,6 +14,8 @@ function Page() {
   });
 
   const { loading, post } = useFetch();
+
+  const router = useRouter()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,24 +47,23 @@ function Page() {
       );
       toast.success("Registration successful!");
 
-      console.log(response, 'response')
-
+      console.log(response, "response");
 
       const paymentResponse = await post(
         "https://platview-backend.onrender.com/api/payment/initialize",
         {
-          registrationId: response.data.registrationId, 
+          registrationId: response.data.registrationId,
         }
       );
-      
-            if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
-              toast.success("Redirecting to payment...");
-      
-              // Redirect to Paystack payment page
-              window.location.href = paymentResponse.data.authorizationUrl;
-            } else {
-              toast.error("Payment initialization failed. Please try again.");
-            }
+
+      if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
+        toast.success("Redirecting to payment...");
+
+        // Redirect to Paystack payment page
+        window.location.href = paymentResponse.data.authorizationUrl;
+      } else {
+        toast.error("Payment initialization failed. Please try again.");
+      }
 
       // Reset form after successful submission
       setFormData({
@@ -70,8 +72,6 @@ function Page() {
         phone: "",
         email: "",
       });
-
-
     } catch (err) {
       toast.error(
         err instanceof Error
@@ -149,7 +149,11 @@ function Page() {
             className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? "LOADING..." : "CONTINUE"}
           </button>
-          <button className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors">
+          <button
+            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors"
+            onClick={() => {
+              router.back();
+            }}>
             BACK
           </button>
         </div>

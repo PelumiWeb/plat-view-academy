@@ -10,6 +10,19 @@ const WhyChoose = () => {
           Why Choose Platview Technologies?
         </h2>
 
+        <div className="w-full lg:w-1/2 flex justify-center items-center sm:hidden">
+          <div className="relative w-full h-86">
+            <Image
+              src="/whyChoose2.png"
+              alt="Why Choose Platview Technologies"
+              fill
+              className="object-contain"
+              // sizes="(max-width: 868px) 100vw, (max-width: 1024px) 50vw, 600px"
+              priority
+            />
+          </div>
+        </div>
+
         <p className="font-medium text-sm sm:text-base md:text-lg lg:text-xl xl:text-[24px] font-sans leading-relaxed md:leading-loose text-white text-left mb-4 md:mb-5 lg:mb-6">
           Platview Technologies is a cybersecurity and IT solutions company
           delivering enterprise-grade services across Africa and beyond.
@@ -23,8 +36,8 @@ const WhyChoose = () => {
       </div>
 
       {/* Image Section */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center">
-        <div className="relative w-full h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[440px] max-w-md md:max-w-lg lg:max-w-xl xl:max-w-none">
+      <div className="w-full lg:w-1/2 hidden sm:flex justify-center items-center ">
+        <div className="relative w-full h-56 sm:h-64 md:h-80 lg:h-96 xl:h-110 max-w-md md:max-w-lg lg:max-w-xl xl:max-w-none">
           <Image
             src="/whyChoose2.png"
             alt="Why Choose Platview Technologies"

@@ -9,7 +9,7 @@ type ProgramFormTypes = {
 };
 
 const card = [
-  { title: "Training Start Date", body: "March 2, 2026" },
+  { title: "Training Start Date", body: "March 30, 2026" },
   { title: "Duration", body: "6 weeks" },
   { title: "Format", body: "Instructor-led training with practical sessions" },
   {
@@ -34,7 +34,7 @@ const ProgramFormCard = (props: ProgramFormTypes) => {
 function ProgramFormDetails() {
   const router = useRouter();
   return (
-    <div className="bg-[#0E95470D] min-h-screen lg:h-308 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 relative overflow-hidden">
+    <div className="bg-[#0E95470D] min-h-screen lg:h-388 px-4 sm:px-8 lg:px-16 py-8 sm:py-12 lg:py-16 relative overflow-hidden">
       <div className="relative z-10">
         <h2 className="text-[#292663] font-bold leading-tight lg:leading-14.75 text-xl sm:text-2xl lg:text-[28px] text-left font-sans mb-6 sm:mb-8">
           Program Format & Details
@@ -45,8 +45,43 @@ function ProgramFormDetails() {
             <ProgramFormCard key={index} {...data} />
           ))}
 
+          <div className="w-full rounded-[18px] bg-[#F0F0FF]  flex flex-col items-center p-6 sm:p-8 lg:p-10 gap-6 my-4 hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all">
+            <p className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-[#0022D4] text-center">
+              Format
+            </p>
+
+            <p className="font-bold text-base sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] text-center max-w-4xl">
+              Access to recorded course materials via our LMS • Assigned tasks
+              for each module • Weekly weekend virtual sessions with the
+              facilitator for review, learning reinforcement, Q&A, and
+              clarification
+            </p>
+
+            {/* Benefits Section */}
+            <div className="w-full flex flex-col sm:flex-row gap-4 justify-between items-stretch">
+              <div className="bg-white rounded-[18px] flex-1 min-h-[140px] flex flex-col justify-center items-center p-4 sm:p-6 gap-3">
+                <p className="font-medium text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
+                  Other Benefits Include:
+                </p>
+                <p className="font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center">
+                  Internship and job opportunities for selected high flyers
+                </p>
+              </div>
+
+              <div className="bg-white rounded-[18px] flex-1 min-h-[140px] flex flex-col justify-center items-center p-4 sm:p-6 gap-3">
+                <p className="font-medium text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
+                  Bonus Courses Include:
+                </p>
+                <p className="font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center">
+                  Free soft skills training with certificate • Free CV and cover
+                  letter training from experienced HR professional
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Ready to Get Started Card */}
-          <div className="w-full rounded-[18px] bg-[#F0F0FF] shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 p-6 sm:p-8 lg:p-4 mt-4 sm:mt-6 gap-6 lg:gap-0">
+          <div className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 p-6 sm:p-8 lg:p-4 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer">
             {/* Left Content */}
             <div className="w-full lg:w-[65%] flex flex-col text-center lg:text-left">
               <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4">

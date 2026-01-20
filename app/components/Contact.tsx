@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast"; // or your toast library
 import { useFetch } from "../useFetch";
+import { useRouter } from "next/navigation";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ function Contact() {
   });
 
   const { loading, error, post } = useFetch();
+
+  const router = useRouter();
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -88,8 +91,14 @@ function Contact() {
             Catch us on Socials
           </h4>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-1">
-            <div className="bg-[#3B5998] w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-l-lg sm:rounded-r-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+          <div className="flex flex-row items-center justify-center gap-3 sm:gap-1 flex-wrap md:flex-nowrap">
+            <div
+              className="bg-[#3B5998] w-[40%] md:w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-l-lg sm:rounded-r-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity "
+              onClick={() => {
+                router.push(
+                  "https://www.facebook.com/share/16rw1vqV66/?mibextid=wwXIfr"
+                );
+              }}>
               <Image
                 src="/facebook.png"
                 width={16}
@@ -103,7 +112,13 @@ function Contact() {
               </p>
             </div>
 
-            <div className="bg-[#1DA1F2] w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+            <div
+              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => {
+                router.push(
+                  "https://www.tiktok.com/@platviewtech?_r=1&_t=ZS-93Dy6A2l38j"
+                );
+              }}>
               <Image
                 src="/twitter.png"
                 width={16}
@@ -117,7 +132,13 @@ function Contact() {
               </p>
             </div>
 
-            <div className="bg-[#5851DB] w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-none sm:rounded-l-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+            <div
+              className="bg-[#5851DB] w-[40%] md:w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-none sm:rounded-l-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => {
+                router.push(
+                  "https://www.instagram.com/platviewtech?igsh=ZmlodnNnMWNmdWNx&utm_source=qrL"
+                );
+              }}>
               <Image
                 src="/instagram.png"
                 width={16}
@@ -131,7 +152,13 @@ function Contact() {
               </p>
             </div>
 
-            <div className="bg-[#1DA1F2] w-full sm:w-77.5 h-20 sm:h-24   rounded-r-lg sm:rounded-r-lg  flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+            <div
+              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-20 sm:h-24   rounded-lg sm:rounded-r-lg  flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => {
+                router.push(
+                  "https://www.linkedin.com/company/platview-technologies/"
+                );
+              }}>
               <Image
                 src="/linked.png"
                 width={24}
