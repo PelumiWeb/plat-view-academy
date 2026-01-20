@@ -59,14 +59,8 @@ function Page() {
         phone: "",
         email: "",
       });
-
-    
     } catch (err) {
-      toast.error(
-        err instanceof Error
-          ? err.message
-          : "Registration failed. Please try again."
-      );
+      toast.error("Registration failed. Please try again.");
     }
   };
 

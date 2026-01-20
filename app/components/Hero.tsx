@@ -67,10 +67,10 @@ const Hero = () => {
 
           <div className="mt-4 sm:mt-5 md:mt-6">
             <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#292663] w-full md:w-175">
-              Pays From Day One
+              Start Your
             </h1>
             <h2 className="font-sans font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[59px] leading-tight text-[#0022D4] mt-1 sm:mt-2 w-full md:w-175">
-              Zero to Hero Program
+              Zero to Hero <span className="text-[#292663]">Journey</span>
             </h2>
             <p className="font-sans font-normal text-sm sm:text-base md:text-lg lg:text-xl xl:text-[22px] leading-relaxed text-black mt-4 sm:mt-5 md:mt-6 max-w-2xl">
               Break into cybersecurity with hands-on training that takes you

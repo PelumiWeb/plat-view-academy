@@ -117,7 +117,7 @@ function Contact() {
               </p>
             </div>
 
-            <div className="bg-[#5851DB] w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-r-lg sm:rounded-l-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+            <div className="bg-[#5851DB] w-full sm:w-77.5 h-20 sm:h-24 rounded-lg sm:rounded-none sm:rounded-l-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
               <Image
                 src="/instagram.png"
                 width={16}
@@ -128,6 +128,20 @@ function Contact() {
               />
               <p className="text-white text-base sm:text-[18px] leading-tight sm:leading-5.25 font-poppins ml-2">
                 Instagram
+              </p>
+            </div>
+
+            <div className="bg-[#1DA1F2] w-full sm:w-77.5 h-20 sm:h-24   rounded-r-lg sm:rounded-r-lg  flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity">
+              <Image
+                src="/linked.png"
+                width={24}
+                height={24}
+                priority
+                className="object-contain"
+                alt="Twitter icon"
+              />
+              <p className="text-white text-base sm:text-[18px] leading-tight sm:leading-5.25 font-poppins ml-2">
+                LinkedIn
               </p>
             </div>
           </div>
