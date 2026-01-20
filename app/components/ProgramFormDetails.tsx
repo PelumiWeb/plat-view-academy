@@ -81,7 +81,9 @@ function ProgramFormDetails() {
           </div>
 
           {/* Ready to Get Started Card */}
-          <div className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 p-6 sm:p-8 lg:p-4 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer">
+          <div
+            id="register-section"
+            className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 p-6 sm:p-8 lg:p-4 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer">
             {/* Left Content */}
             <div className="w-full lg:w-[65%] flex flex-col text-center lg:text-left">
               <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4">

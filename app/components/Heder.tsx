@@ -61,7 +61,7 @@ const Header = () => {
         {/* Desktop Register Button */}
         <button
           className="hidden lg:block bg-[#07DB76] text-[#070B1A] py-2 px-4 rounded-[70px] text-[20px] font-semibold font-sans h-18 w-55.75 hover:bg-opacity-90 transition-opacity cursor-pointer"
-          onClick={(e) => handleNavClick(e, "#program-details")}
+          onClick={(e) => handleNavClick(e, "#register-section",)}
           
           >
           Register Now
@@ -116,7 +116,8 @@ const Header = () => {
               </a>
             ))}
             <button
-              onClick={(e) => handleNavClick(e, "#program-details")}
+               onClick={(e) => handleNavClick(e, "#register-section")}
+
               className="w-full bg-[#07DB76] text-[#070B1A] py-3 px-4 rounded-[70px] text-base sm:text-lg font-semibold font-sans hover:bg-opacity-90 transition-opacity mt-4 cursor-pointer">
               Register Now
             </button>

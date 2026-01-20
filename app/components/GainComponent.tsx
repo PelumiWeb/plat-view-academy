@@ -10,8 +10,8 @@ const GainComponent = () => {
     <div className="bg-[#0022D4] w-full flex flex-col lg:flex-row items-start justify-between text-center px-4 md:px-8 lg:px-16 py-16 gap-8 lg:gap-12">
       {/* Content Section */}
 
-      <div className="flex flex-col items-start ">
-        <h2 className="font-bold text-3xl md:text-4xl lg:text-[48px] text-white leading-tight lg:leading-14.75 font-sans text-left">
+      <div className="flex flex-col items-start">
+        <h2 className="font-bold text-3xl md:text-4xl lg:text-[48px] text-white leading-tight lg:leading-14.75 font-sans text-left -mb-15 md:mb-0">
           What You'll Gain
         </h2>
 
@@ -26,7 +26,7 @@ const GainComponent = () => {
           </div>
         </div>
 
-        <ul className="list-disc text-white w-full lg:w-[75%] my-6 md:my-8 lg:my-4 pl-5 md:pl-6 space-y-3 md:space-y-0">
+        <ul className="list-disc text-white w-full lg:w-[75%] my-6 md:my-8 lg:my-4 pl-5 md:pl-6 space-y-3 md:space-y-0 -mt-5 md:mt-0">
           <li>
             <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
               Understand the fundamentals of cybersecurity concepts and
@@ -61,9 +61,11 @@ const GainComponent = () => {
           </li>
         </ul>
 
-        <button className="bg-[#F2F2FE] w-[50%] sm:w-auto sm:px-8 md:w-53.5 h-12 md:h-15.5 border-none rounded-[7px] text-[#292663] font-bold font-sans uppercase text-sm md:text-base"
-          onClick={(e) => handleNavClick(e, "#program-details", router)}
-        >
+        <button
+          className="bg-[#F2F2FE] w-[50%] sm:w-auto sm:px-8 md:w-53.5 h-12 md:h-15.5 border-none rounded-[7px] text-[#292663] font-bold font-sans uppercase text-sm md:text-base"
+          onClick={(e) => handleNavClick(e, "#register-section", router)}
+          
+          >
           register now
         </button>
       </div>

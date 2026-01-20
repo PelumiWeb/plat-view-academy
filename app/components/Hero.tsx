@@ -97,8 +97,7 @@ const Hero = () => {
               className="bg-[#292663] text-white rounded-[7px] text-sm sm:text-base md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 w-full sm:w-auto hover:bg-opacity-90 transition-opacity
               
               cursor-pointer"
-              onClick={(e) => handleNavClick(e, "#program-details", router)}
-              >
+              onClick={(e) => handleNavClick(e, "#register-section", router)}>
               Register Now
             </button>
             <button
@@ -109,8 +108,8 @@ const Hero = () => {
           </div>
 
           {/* Countdown Section */}
-          <div className="mt-6 sm:mt-7 md:mt-8">
-            <p className="font-sans font-normal text-base sm:text-lg md:text-xl leading-relaxed text-[#000000]">
+          <div className="mt-6 sm:mt-7 md:mt-8 -mb-10 sm:mb-0">
+            <p className="font-sans font-normal text-base sm:text-lg md:text-xl leading-relaxed text-[#000000] ">
               Training starts March 2, 2026
             </p>
             <div className="flex items-center gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4">
