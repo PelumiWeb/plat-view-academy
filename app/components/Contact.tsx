@@ -87,7 +87,7 @@ function Contact() {
       {/* Catch us on Socials */}
       <div className="min-h-100 lg:h-150 flex justify-center items-center px-4 py-12 lg:py-0">
         <div className="w-full max-w-4xl">
-          <h4 className="font-sans font-bold text-2xl sm:text-3xl lg:text-[36px] text-[#000000] leading-tight lg:leading-15 text-center mb-6 sm:mb-8 lg:mb-4">
+          <h4 className="font-sans font-bold text-2xl sm:text-3xl lg:text-[36px] text-[#000000] leading-tight lg:leading-15 text-center mb-6 sm:mb-8 lg:mb-4 -mt-32 md:mt-0">
             Catch us on Socials
           </h4>
 
@@ -155,9 +155,7 @@ function Contact() {
             <div
               className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-20 sm:h-24   rounded-lg sm:rounded-r-lg  flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => {
-                router.push(
-                  "https://www.linkedin.com/company/platview-technologies/"
-                );
+                router.push("https://x.com/platviewtech?s=21");
               }}>
               <Image
                 src="/linked.png"

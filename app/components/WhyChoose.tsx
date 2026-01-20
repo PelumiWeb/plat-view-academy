@@ -3,9 +3,9 @@ import React from "react";
 
 const WhyChoose = () => {
   return (
-    <div className="bg-[#0022D4] min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20 gap-8 lg:gap-12 xl:gap-16">
+    <div className="bg-[#0022D4] h-150 md:min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-4  sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 lg:py-20 gap-8 lg:gap-12 xl:gap-16">
       {/* Content Section */}
-      <div className="flex flex-col items-start w-full lg:w-1/2 max-w-2xl lg:max-w-none">
+      <div className="flex flex-col items-start w-full lg:w-1/2 max-w-2xl lg:max-w-none ">
         <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[48px] text-white leading-tight sm:leading-snug md:leading-tight font-sans text-left -mb-8 md:mb-6">
           Why Choose Platview Technologies?
         </h2>
