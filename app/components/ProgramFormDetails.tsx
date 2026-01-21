@@ -20,7 +20,7 @@ const card = [
 
 const ProgramFormCard = (props: ProgramFormTypes) => {
   return (
-    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-151 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 my-4 p-4 cursor-pointer transition-all">
+    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-158 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 my-4 p-4 cursor-pointer transition-all">
       <p className="text-xl sm:text-2xl lg:text-[32px] font-semibold leading-tight lg:leading-9.75 font-sans text-[#0022D4] text-center">
         {props.title}
       </p>
@@ -46,11 +46,11 @@ function ProgramFormDetails() {
           ))}
 
           <div className="w-full rounded-[18px] bg-[#F0F0FF]  flex flex-col items-center p-6 sm:p-8 lg:p-10 gap-6 my-4 hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all">
-            <p className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-[#0022D4] text-center">
+            <p className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-[#0022D4] text-center font-sans">
               Format
             </p>
 
-            <p className="font-bold text-base sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] text-center max-w-4xl">
+            <p className="font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] text-center max-w-4xl font-sans">
               Access to recorded course materials via our LMS • Assigned tasks
               for each module • Weekly weekend virtual sessions with the
               facilitator for review, learning reinforcement, Q&A, and
@@ -60,22 +60,32 @@ function ProgramFormDetails() {
             {/* Benefits Section */}
             <div className="w-full flex flex-col sm:flex-row gap-4 justify-between items-stretch">
               <div className="bg-white rounded-[18px] flex-1 min-h-[140px] flex flex-col justify-center items-center p-4 sm:p-6 gap-3">
-                <p className="font-medium text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
+                <p className="font-sans font-bold text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
                   Other Benefits Include:
                 </p>
-                <p className="font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center">
+                <p className="font-sans font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center">
                   Internship and job opportunities for selected high flyers
                 </p>
               </div>
 
-              <div className="bg-white rounded-[18px] flex-1 min-h-[140px] flex flex-col justify-center items-center p-4 sm:p-6 gap-3">
-                <p className="font-medium text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
+              <div className="bg-white rounded-[18px] flex-1 min-h-50 md:min-h-35 flex flex-col justify-center items-center p-4 sm:p-6 gap-3">
+                <p className="font-sans font-bold text-lg sm:text-xl lg:text-[20px] text-[#292663] text-center">
                   Bonus Courses Include:
                 </p>
-                <p className="font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center">
-                  Free soft skills training with certificate • Free CV and cover
-                  letter training from experienced HR professional
+                <p className="font-sans  font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center -mt-2 md:mt-0 hidden md:block">
+                  Free soft skills training with a certificate of completion
+                  from an experienced facilitator Free CV / cover letter
+                  training from an experienced HR professional
                 </p>
+                <ul className="list-disc list-inside space-y-2 block md:hidden text-left w-full">
+                  <li className="font-sans  font-normal text-sm sm:text-base  text-[#292663]  ">
+                    Free soft skills training with a certificate of completion
+                    from an experienced facilitator Free CV
+                  </li>
+                  <li className="font-sans  font-normal text-sm  text-[#292663]  ">
+                    Cover letter training from an experienced HR professional
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -83,9 +93,9 @@ function ProgramFormDetails() {
           {/* Ready to Get Started Card */}
           <div
             id="register-section"
-            className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 p-6 sm:p-8 lg:p-4 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer">
+            className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 px-6 lg:px-12 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer py-4 md:py-0 ">
             {/* Left Content */}
-            <div className="w-full lg:w-[65%] flex flex-col text-center lg:text-left">
+            {/* <div className="w-full lg:w-[65%] flex flex-col text-center lg:text-left">
               <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4">
                 Ready to Get Started?
               </h2>
@@ -98,7 +108,29 @@ function ProgramFormDetails() {
                 <span className="font-bold">(3) installments</span> , to be
                 fully paid before the training start date (30th March, 2026)
               </p>
-            </div>
+            </div> */}
+            <ul className="w-full lg:w-[65%] flex flex-col text-left list-disc list-inside space-y-2">
+              <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4 ">
+                Ready to Get Started?
+              </h2>
+              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0  pl-2">
+                <span className="font-bold">
+                  Early bird discount: 20% off ₦120,000
+                </span>{" "}
+                (Valid until mid-February)
+              </li>
+              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
+                <span className="font-bold">Installment option:</span>  Allowed,
+                with a maximum of three{" "}
+                <span className="font-bold">(3) installments</span> - To be
+                fully paid before the training start date (30th March, 2026)
+              </li>
+
+              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
+                Please note: Installment payments are not applicable to early
+                bird registrations.
+              </li>
+            </ul>
 
             {/* Right Content - Training Fee */}
             <div className="w-full lg:w-[45%] flex flex-col justify-center items-center space-y-3 sm:space-y-4 py-4 lg:py-0">
@@ -111,7 +143,7 @@ function ProgramFormDetails() {
 
               <div className="w-full sm:w-auto mt-4">
                 <button
-                  className="w-full sm:w-auto min-w-35 h-12 sm:h-13.75 bg-[#0E9547] uppercase rounded-[7px] border-none px-4 sm:px-6 py-2 sm:py-2.25 text-white font-bold text-sm sm:text-[16px] cursor-pointer"
+                  className="w-full sm:w-auto lg:w-53.25 min-w-35 h-12 sm:h-13.75 bg-[#0E9547] uppercase rounded-[7px] border-none px-4 sm:px-6 py-2 sm:py-2.25 text-white font-bold text-sm sm:text-[16px] cursor-pointer"
                   onClick={() => router.push("/register")}>
                   register
                 </button>

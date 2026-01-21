@@ -3,7 +3,7 @@ import React from "react";
 
 function About() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:h-141 px-4 md:px-8 lg:px-4 py-12 lg:py-0 gap-8 lg:gap-12">
+    <div className="flex flex-col lg:flex-row items-center justify-center h-200 lg:h-141 px-4 md:px-8 lg:px-4 py-12 lg:py-0 gap-8 lg:gap-12 -my-8 ">
       {/* Image Section */}
       <div className="w-full -mt-20 md:mt-0 lg:w-[50%]  justify-center items-center hidden md:flex">
         <div className="relative  w-180.75  h-120">
@@ -18,21 +18,21 @@ function About() {
 
       {/* Content Section */}
       <div className="w-full lg:w-[45%] max-w-2xl lg:max-w-none py-8 md:py-0 md:mb-0  -mt-10">
-        <h1 className="font-sans font-bold text-3xl md:text-4xl lg:text-[48px] leading-tight lg:leading-14.75 text-[#292663] -mb-25 md:mb-0">
+        <h1 className="font-sans font-bold text-[20px] text-center md:text-left  md:text-3xl md:text-4xl lg:text-[48px] leading-tight lg:leading-14.75 text-[#292663] -mb-25 md:mb-0">
           About the Zero to Hero Cybersecurity Program
         </h1>
 
-        <div className="w-full -mb-25 md:mt-0 lg:w-[50%] flex justify-center items-center md:hidden ">
+        <div className="w-full -mb-25 md:mt-0 lg:w-[50%] flex justify-center items-center md:hidden mt-4">
           <div className="relative  w-180.75  h-120">
             <Image
-              src="/aboutImage.svg"
+              src="/aboutImageMobile.png"
               alt="About Image"
               fill
               className="object-contain "
             />
           </div>
         </div>
-        <div className="space-y-4 md:space-y-5 lg:space-y-4 -mt-8 md:mt-8">
+        <div className="space-y-4 md:space-y-5 lg:space-y-4 -mt-6 md:mt-8 -mb-[20px] md:mb-0">
           <p className="font-normal text-base md:text-lg lg:text-[20px] leading-relaxed lg:leading-8.25 text-[#292663] font-sans">
             The Zero to Hero Cybersecurity Program is a structured, hands-on
             training designed for individuals with little or no prior

@@ -57,8 +57,8 @@ const Hero = () => {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-12 lg:py-16 xl:py-20 relative z-10 max-w-[1600px] mx-auto">
+    <div className="  relative overflow-hidden">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-6 relative z-10 max-w-[1600px] mx-auto">
         {/* Hero Left */}
         <div className="w-full lg:w-[55%] xl:w-[50%] lg:pr-8 xl:pr-12">
           <p className="text-primary-green text-xs sm:text-sm md:text-base font-semibold tracking-wide">
@@ -66,53 +66,58 @@ const Hero = () => {
           </p>
 
           <div className="mt-4 sm:mt-5 md:mt-6">
-            <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#292663] w-full md:w-175">
+            <h1 className="hidden md:block font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#292663] w-full md:w-175">
               Start Your
             </h1>
             {/* text-[#0022D4] */}
-            <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#0022D4] w-full md:w-175">
+
+            <h2 className="hidden md:block font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#0022D4] w-full md:w-185">
               Zero to Hero <span className="text-[#292663]">Journey</span>
             </h2>
-            <p className="font-sans font-normal text-sm sm:text-base md:text-lg lg:text-xl xl:text-[22px] leading-relaxed text-black mt-4 sm:mt-5 md:mt-6 max-w-2xl">
+
+            <h2 className="block md:hidden font-manrope font-extrabold text-[32px] leading-10.25 text-[#292663] w-[95%]">
+              Start Your <span className="text-[#0022D4]">Zero to Hero </span>
+              Journey
+            </h2>
+            <p className="font-sans font-normal text-sm sm:text-base md:text-lg lg:text-xl xl:text-[22px] leading-relaxed text-black mt-4 sm:mt-5 md:mt-6 max-w-2xl w-[70%]  md:w-full">
               Break into cybersecurity with hands-on training that takes you
               from zero to job-ready.
             </p>
           </div>
-          <div className="relative w-full max-w-100 sm:max-w-125 md:max-w-150 lg:hidden mx-auto flex justify-center">
-            <div className="relative w-full aspect-5/5 sm:aspect-3/4 flex items-center justify-center">
+          <div className="lg:hidden absolute top-[70px] right-0 w-[400px] sm:w-[360px] h-[300px] pointer-events-none overflow-hidden">
+            <div className="relative w-full h-full translate-x-[35%]">
               <Image
                 src="/PlatviewGuy.svg"
                 alt="Cybersecurity professional illustration"
                 fill
                 className="object-contain"
-                sizes="(max-width: 640px) 400px, (max-width: 768px) 500px, 600px"
                 priority
               />
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-row gap-3 sm:gap-4 mt-6 sm:mt-7 md:mt-8">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4 mt-6 sm:mt-7 md:mt-8">
             <button
-              className="bg-[#292663] text-white rounded-[7px] text-sm sm:text-base md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 w-full sm:w-auto hover:bg-opacity-90 transition-opacity
+              className="bg-[#292663] text-white rounded-[7px] text-[12px]  md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 w-[150px] md:w-auto hover:bg-opacity-90 transition-opacity
               
               cursor-pointer"
               onClick={(e) => handleNavClick(e, "#register-section", router)}>
               Register Now
             </button>
             <button
-              className="rounded-[7px] text-sm sm:text-base md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 border-2 border-[#0022D4] text-[#0022D4] w-full sm:w-auto hover:bg-[#0022D4] hover:text-white transition-colors cursor-pointer"
+              className="rounded-[7px] text-[12px] md:text-lg font-bold font-sans h-12 sm:h-13 md:h-[62px] uppercase text-center py-3 px-6 sm:px-8 border-2 border-[#0022D4] text-[#0022D4] w-[150px] md:w-auto hover:bg-[#0022D4] hover:text-white transition-colors cursor-pointer"
               onClick={(e) => handleNavClick(e, "#contact", router)}>
               Contact Us
             </button>
           </div>
 
           {/* Countdown Section */}
-          <div className="mt-6 sm:mt-7 md:mt-8 -mb-10 sm:mb-0">
+          <div className="mt-6 sm:mt-7 md:mt-8 -mb-10 sm:mb-0 flex flex-col justify-center md:justify-start  items-center md:items-start">
             <p className="font-sans font-normal text-base sm:text-lg md:text-xl leading-relaxed text-[#000000] ">
               Training starts March 2, 2026
             </p>
-            <div className="flex items-center gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4">
+            <div className="flex items-center md:items-start gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4">
               {countdownData.map((data, index) => (
                 <div
                   key={index}
@@ -146,13 +151,13 @@ const Hero = () => {
           </div> */}
 
           {/* Desktop */}
-          <div className="hidden lg:block relative w-full">
-            <div className="relative w-full h-[500px] xl:h-[600px] 2xl:h-[700px]">
+          <div className="hidden lg:block relative w-full md:-mt-15">
+            <div className="relative w-full h-[600px] xl:h-[700px] 2xl:h-[700px]">
               <Image
                 src="/PlatviewGuy.svg"
                 alt="Cybersecurity professional illustration"
                 fill
-                className="object-contain object-right"
+                className="object-contain object-left"
                 sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 45vw, 40vw"
                 priority
               />
