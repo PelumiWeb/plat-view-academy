@@ -180,6 +180,10 @@ function ProgramFormDetails() {
       <div className="block absolute top-[2%] sm:top-[0%] z-1 -right-[10%] w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[555px] lg:h-[555px]">
         <Image src="/program.svg" alt="" fill className="object-contain" />
       </div>
+
+      <div className="absolute bottom-[60%] z-1 -right-[15%] w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[555px] lg:h-[555px] block md:hidden">
+        <Image src="/program.svg" alt="" fill className="object-contain" />
+      </div>
     </div>
   );
 }
