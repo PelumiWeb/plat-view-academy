@@ -76,7 +76,10 @@ const Hero = () => {
             </h2>
 
             <h2 className="block md:hidden font-manrope font-extrabold md:font-bold text-[32px] leading-10.25 text-[#292663] w-[95%]">
-              Start Your <span className="text-[#0022D4]">Zero to Hero </span>
+              Start Your{" "}
+              <span className="font-manrope font-extrabold md:font-bold text-[#0022D4]">
+                Zero to Hero{" "}
+              </span>
               Journey
             </h2>
             <p className="font-sans font-normal text-sm sm:text-base md:text-lg lg:text-xl xl:text-[22px] leading-relaxed text-black mt-4 sm:mt-5 md:mt-6 max-w-2xl w-[70%]  md:w-full">
