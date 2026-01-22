@@ -58,7 +58,7 @@ const Hero = () => {
 
   return (
     <div className="  relative overflow-hidden">
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-6 relative z-10 max-w-[1600px] mx-auto">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-6 relative z-10 max-w-400 mx-auto ">
         {/* Hero Left */}
         <div className="w-full lg:w-[55%] xl:w-[50%] lg:pr-8 xl:pr-12">
           <p className="text-primary-green text-xs sm:text-sm md:text-base font-semibold tracking-wide">

@@ -166,7 +166,7 @@ function UpcomingEvent() {
   }, []);
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 lg:py-12 xl:py-16 bg-white">
+    <div className="px-8 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 lg:py-12 xl:py-16 bg-white">
       <h2 className="text-[#292663] font-bold leading-tight text-xl sm:text-2xl lg:text-3xl xl:text-[28px] text-left font-sans mb-6 sm:mb-8 lg:mb-10">
         Upcoming Events
       </h2>

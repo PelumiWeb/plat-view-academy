@@ -113,7 +113,7 @@ function Contact() {
             </div>
 
             <div
-              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-15 sm:h-24 rounded-lg sm:rounded-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-15 sm:h-24 rounded-lg  sm:rounded-none flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => {
                 router.push(
                   "https://www.tiktok.com/@platviewtech?_r=1&_t=ZS-93Dy6A2l38j"
@@ -153,7 +153,10 @@ function Contact() {
             </div>
 
             <div
-              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-15 sm:h-24   rounded-lg sm:rounded-r-lg  flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
+              className="bg-[#1DA1F2] w-[40%] md:w-full sm:w-77.5 h-15 sm:h-24    
+              rounded-lg md:rounded-none md:rounded-r-lg
+            
+              flex justify-center items-center cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => {
                 router.push("https://x.com/platviewtech?s=21");
               }}>

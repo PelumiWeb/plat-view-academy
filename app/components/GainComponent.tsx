@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 const GainComponent = () => {
   const router = useRouter();
   return (
-    <div className="bg-[#0022D4] w-full flex flex-col lg:flex-row items-start justify-between text-center px-4 md:px-8 lg:px-16 py-8 gap-8 lg:gap-12">
+    <div className="bg-[#0022D4] w-full flex flex-col lg:flex-row items-start justify-between text-center px-6 md:px-8 lg:px-16 py-6 sm:py-12 gap-8 lg:gap-12">
       {/* Content Section */}
 
       <div className="flex flex-col items-start">
-        <h2 className="font-bold text-[24px] md:text-4xl lg:text-[48px] text-white leading-tight lg:leading-14.75 font-sans text-center md:text-left -mb-15 md:mb-0 w-full">
+        <h2 className="font-bold text-[24px] md:text-4xl lg:text-[48px] text-white leading-tight lg:leading-14.75 font-sans text-center md:text-left -mb-20 sm:-mb-10  md:mb-0 w-full sm:py-4">
           What You'll Gain
         </h2>
 
@@ -26,7 +26,7 @@ const GainComponent = () => {
           </div>
         </div>
 
-        <ul className="list-disc text-white w-full  my-6 md:my-8 lg:my-4 px-10 md:px-6 space-y-1 md:space-y-3 -mt-5 md:mt-0 " >
+        <ul className="list-disc text-white w-full  my-6 md:my-8 lg:my-4 px-10 md:px-6 space-y-1 md:space-y-3 -mt-5 md:mt-0 ">
           <li>
             <p className="font-sans text-sm md:text-base lg:text-[16px] font-medium leading-relaxed lg:leading-6.5 text-white text-left">
               Understand the fundamentals of cybersecurity concepts and

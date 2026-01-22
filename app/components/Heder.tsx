@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <div className="shadow-[0px_4px_40px_0px_#0000001A] w-full h-auto lg:h-36.5 bg-white relative z-50">
       {/* Desktop & Mobile Header */}
-      <div className="flex items-center justify-between px-4 sm:px-6 lg:px-16 py-4 lg:py-0 h-20 lg:h-36.5">
+      <div className="flex items-center justify-between px-6 sm:px-6 lg:px-16 py-4 lg:py-0 h-20 lg:h-36.5">
         {/* Logo */}
         <div
           className="flex items-center shrink-0 cursor-pointer"
@@ -61,9 +61,7 @@ const Header = () => {
         {/* Desktop Register Button */}
         <button
           className="hidden lg:block bg-[#07DB76] text-[#070B1A] py-2 px-4 rounded-[70px] text-[20px] font-semibold font-sans h-18 w-55.75 hover:bg-opacity-90 transition-opacity cursor-pointer"
-          onClick={(e) => handleNavClick(e, "#register-section",)}
-          
-          >
+          onClick={(e) => handleNavClick(e, "#register-section")}>
           Register Now
         </button>
 
@@ -104,7 +102,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 bg-white">
+        <div className="lg:hidden border-t border-gray-200 bg-white ">
           <div className="px-4 py-4 space-y-3">
             {navigation.map((item) => (
               <a
@@ -116,8 +114,7 @@ const Header = () => {
               </a>
             ))}
             <button
-               onClick={(e) => handleNavClick(e, "#register-section")}
-
+              onClick={(e) => handleNavClick(e, "#register-section")}
               className="w-full bg-[#07DB76] text-[#070B1A] py-3 px-4 rounded-[70px] text-base sm:text-lg font-semibold font-sans hover:bg-opacity-90 transition-opacity mt-4 cursor-pointer">
               Register Now
             </button>

@@ -3,7 +3,7 @@ import React from "react";
 
 const WhyChoose = () => {
   return (
-    <div className="bg-[#0022D4] h-140 md:h-130  w-full flex flex-col md:flex-row items-center justify-between px-4 md:px-12 pt-6">
+    <div className="bg-[#0022D4] h-140 md:h-130  w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-12 pt-6">
       {/* Content Section */}
       <div className="flex flex-col items-start w-full lg:w-1/2 max-w-2xl lg:max-w-none  lg:-mt-24">
         <h2 className="font-bold text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-[48px] text-white leading-tight sm:leading-snug md:leading-tight font-sans  md:mb-6 text-center md:text-left ">
