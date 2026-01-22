@@ -18,7 +18,7 @@ function About() {
 
       {/* Content Section */}
       <div className="w-full lg:w-[45%] max-w-2xl lg:max-w-none  md:py-0   md:-mt-10 md:mb-0  ">
-        <h1 className="font-sans font-bold text-[20px] text-center md:text-left  md:text-3xl  lg:text-[48px] leading-tight lg:leading-14.75 text-[#292663]  md:mb-0 -mt-12">
+        <h1 className="font-sans font-bold text-[20px] text-center md:text-left  md:text-3xl  lg:text-[48px] leading-tight lg:leading-14.75 text-[#292663]  md:mb-0 -mt-12 md:mt-0">
           About the Zero to Hero Cybersecurity Program
         </h1>
 
