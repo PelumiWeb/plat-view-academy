@@ -71,11 +71,11 @@ const Hero = () => {
             </h1>
             {/* text-[#0022D4] */}
 
-            <h2 className="hidden md:block font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#0022D4] w-full md:w-185">
+            <h2 className="hidden md:block font-sans font-extrabold md:font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[65px] leading-tight text-[#0022D4] w-full md:w-185">
               Zero to Hero <span className="text-[#292663]">Journey</span>
             </h2>
 
-            <h2 className="block md:hidden font-manrope font-extrabold text-[32px] leading-10.25 text-[#292663] w-[95%]">
+            <h2 className="block md:hidden font-manrope font-extrabold md:font-bold text-[32px] leading-10.25 text-[#292663] w-[95%]">
               Start Your <span className="text-[#0022D4]">Zero to Hero </span>
               Journey
             </h2>

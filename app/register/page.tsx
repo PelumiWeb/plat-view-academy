@@ -15,7 +15,7 @@ function Page() {
 
   const { loading, post } = useFetch();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -27,7 +27,7 @@ function Page() {
 
   const handleContinue = async () => {
     // Validation
-    if (!formData.firstName || !formData.phone) {
+    if (!formData.firstName || !formData.phone || !formData.email) {
       toast.error("Please fill in all required fields");
       return;
     }

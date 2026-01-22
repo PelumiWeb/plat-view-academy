@@ -5,7 +5,7 @@ import {
   Inter,
   Montserrat,
   Poppins,
-  Manrope
+  Manrope,
 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Heder";
@@ -14,12 +14,13 @@ import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const geistInter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const geistManrope = Manrope({
@@ -31,17 +32,19 @@ const geistManrope = Manrope({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+
   variable: "--font-poppins",
 });
 

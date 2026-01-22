@@ -3,15 +3,15 @@ import React from "react";
 
 const WhyChoose = () => {
   return (
-    <div className="bg-[#0022D4] h-140 md:h-130  w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-12 pt-6">
+    <div className="bg-[#0022D4] h-140 md:h-130  w-full flex flex-col md:flex-row items-center justify-between px-8 md:px-12 pt-10">
       {/* Content Section */}
       <div className="flex flex-col items-start w-full lg:w-1/2 max-w-2xl lg:max-w-none  lg:-mt-24">
         <h2 className="font-bold text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-[48px] text-white leading-tight sm:leading-snug md:leading-tight font-sans  md:mb-6 text-center md:text-left ">
           Why Choose Platview Technologies?
         </h2>
 
-        <div className="w-full lg:w-1/2 flex justify-center items-center md:hidden">
-          <div className="relative w-full h-80 ">
+        <div className="w-full lg:w-1/2 flex justify-center items-center md:hidden mb-5 md:mb-0">
+          <div className="relative w-full h-66 md:h-80 ">
             <Image
               src="/whyChoose2.png"
               alt="Why Choose Platview Technologies"
