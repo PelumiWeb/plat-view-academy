@@ -4,6 +4,27 @@ import React, { useEffect } from "react";
 import { useFetch } from "../useFetch";
 import { useRouter } from "next/navigation";
 
+// const customData = [
+//   {
+//     topic:
+//       "Breaking Into Cybersecurity: A Practical Learning Roadmap for Beginners",
+//     description:
+//       "Why most beginners feel stuck and the exact roadmap cybersecurity professionals follow to build competence.",
+//     location: "Platview Instagram Live @platviewtech",
+//     // start_date: string;
+//     // start_time: string;
+//     // id: string | number;
+//   },
+// ];
+
+const customImage = [
+  "/eventImage1.png",
+  "/eventImage2.png",
+  "/eventImage3.png",
+  "/eventImage4.png",
+  "/eventImage5.png",
+];
+
 const EventCard = (data: {
   topic: string;
   description: string;
@@ -11,8 +32,10 @@ const EventCard = (data: {
   start_date: string;
   start_time: string;
   id: string | number;
+  index: number;
 }) => {
   console.log(data, "from component");
+  console.log(data.index, "index");
   const router = useRouter();
 
   const date = new Date(data.start_date).toLocaleDateString("en-US", {
@@ -26,7 +49,7 @@ const EventCard = (data: {
       {/* Image Section */}
       <div className="w-full md:w-[35%] lg:w-[30%] relative min-h-[250px] md:min-h-[320px] lg:min-h-[350px]">
         <Image
-          src="/eventImage.png"
+          src={customImage[data.index]}
           alt={`${data.topic} event image`}
           fill
           className="object-cover"
@@ -193,8 +216,8 @@ function UpcomingEvent() {
       {!loading && !error && (
         <div className="space-y-4 sm:space-y-6 lg:space-y-8">
           {data?.data?.length > 0 ? (
-            data.data.map((eventData: any) => (
-              <EventCard key={eventData.id} {...eventData} />
+            data.data.map((eventData: any, index: number) => (
+              <EventCard key={eventData.id} {...eventData} index={index} />
             ))
           ) : (
             <div className="text-center py-12">
