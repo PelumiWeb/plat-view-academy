@@ -29,7 +29,7 @@ const card = [
 
 const ProgramFormCard = (props: ProgramFormTypes) => {
   return (
-    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-158 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 m-4 p-4 cursor-pointer transition-all">
+    <div className="w-full sm:w-[calc(50%-2rem)] lg:w-158 h-auto min-h-45 sm:min-h-50 lg:h-49.5 rounded-[18px] bg-[#F0F0FF] hover:shadow-[0px_2px_16.8px_10px_#0022D41A] flex flex-col justify-center items-center space-y-2 my-4 p-4 cursor-pointer transition-all">
       <p className="text-xl sm:text-2xl lg:text-[32px] font-semibold leading-tight lg:leading-9.75 font-sans text-[#0022D4] text-center">
         {props.title}
       </p>
@@ -54,7 +54,7 @@ function ProgramFormDetails() {
             <ProgramFormCard key={index} {...data} />
           ))}
 
-          <div className="w-full rounded-[18px] bg-[#F0F0FF]  flex flex-col items-center p-6 sm:p-8 lg:p-10 gap-6 m-4 hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all">
+          <div className="w-full rounded-[18px] bg-[#F0F0FF]  flex flex-col items-center p-6 sm:p-8 lg:p-10 gap-6 my-4 hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all">
             <p className="text-2xl sm:text-3xl lg:text-[32px] font-semibold text-[#0022D4] text-center font-sans">
               Format
             </p>
@@ -120,7 +120,7 @@ function ProgramFormDetails() {
           {/* Ready to Get Started Card */}
           <div
             id="register-section"
-            className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 px-6 lg:px-12 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer py-4 md:py-0 m-4">
+            className="w-full rounded-[18px] bg-[#F0F0FF] flex flex-col lg:flex-row items-center justify-between min-h-100 lg:h-89 px-6 lg:px-12 mt-4 sm:mt-6 gap-6 lg:gap-0  hover:shadow-[0px_2px_16.8px_10px_#0022D41A] transition-all cursor-pointer py-4 md:py-0 my-4">
             {/* Left Content */}
             {/* <div className="w-full lg:w-[65%] flex flex-col text-center lg:text-left">
               <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4">
