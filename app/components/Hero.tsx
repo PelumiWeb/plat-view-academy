@@ -118,7 +118,7 @@ const Hero = () => {
           {/* Countdown Section */}
           <div className="mt-6 sm:mt-7 md:mt-8 -mb-10 sm:mb-0 flex flex-col justify-center md:justify-start  items-center md:items-start">
             <p className="font-sans font-normal text-base sm:text-lg md:text-xl leading-relaxed text-[#000000] ">
-              Training starts March 2, 2026
+              Training starts March 30, 2026
             </p>
             <div className="flex items-center md:items-start gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4">
               {countdownData.map((data, index) => (
