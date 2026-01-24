@@ -136,29 +136,32 @@ function ProgramFormDetails() {
                 fully paid before the training start date (30th March, 2026)
               </p>
             </div> */}
-         
-            <ul className="w-full lg:w-[65%] flex flex-col text-left list-disc list-inside space-y-2">
-              <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4 ">
-                Ready to Get Started?
-              </h2>
-              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0  pl-2">
-                <span className="font-bold">
-                  Early bird discount: 20% off ₦120,000
-                </span>{" "}
-                (Valid until mid-February)
-              </li>
-              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
-                <span className="font-bold">Installment option:</span>  Allowed,
-                with a maximum of three{" "}
-                <span className="font-bold">(3) installments</span> - To be
-                fully paid before the training start date (30th March, 2026)
-              </li>
 
-              <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
+            <div className="flex flex-col">
+              <ul className="w-full lg:w-[65%] flex flex-col text-left list-disc list-inside space-y-2">
+                <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-sans text-[#292663] mb-3 sm:mb-4 ">
+                  Ready to Get Started?
+                </h2>
+                <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0  pl-2">
+                  <span className="font-bold">
+                    Early bird discount: 20% off ₦120,000
+                  </span>{" "}
+                  (Valid until mid-February)
+                </li>
+                <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
+                  <span className="font-bold">Installment option:</span>{" "}
+                   Allowed, with a maximum of three{" "}
+                  <span className="font-bold">(3) installments</span> - To be
+                  fully paid before the training start date (30th March, 2026)
+                </li>
+              </ul>
+
+              <p className="font-bold font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2 italic mt-2">
                 Please note: Installment payments are not applicable to early
                 bird registrations.
-              </li>
-            </ul>
+              </p>
+            </div>
+
             {/* Right Content - Training Fee */}
             <div className="w-full lg:w-[45%] flex flex-col justify-center items-center space-y-3 sm:space-y-4 py-4 lg:py-0">
               <p className="text-xl sm:text-2xl lg:text-[32px] font-semibold leading-tight lg:leading-9.75 font-sans text-[#0022D4] text-left md:text-center w-full">
