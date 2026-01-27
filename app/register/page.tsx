@@ -12,6 +12,8 @@ function Page() {
     phone: "",
     email: "",
   });
+  const [modal, setModal] = useState(false);
+  const [paymentPlan, setPaymentPlan] = useState<"full" | "imstalment">("full");
 
   const { loading, post } = useFetch();
 
@@ -31,7 +33,10 @@ function Page() {
       toast.error("Please fill in all required fields");
       return;
     }
+    setModal(true);
+  };
 
+  const handleSubmission = async () => {
     try {
       const requestBody = {
         email: formData.email,
@@ -39,6 +44,7 @@ function Page() {
         lastName: formData.lastName,
         phone: formData.phone,
         courseId: 1,
+        paymentPlan: paymentPlan === "full" ? "full" : "installment_2",
       };
 
       const response = await post(
@@ -160,7 +166,7 @@ function Page() {
       </div>
 
       {/* Background Vector */}
-      <div className="absolute inset-x-0 bottom-0 h-180 pointer-events-none z-0">
+      <div className="absolute inset-x-0 bottom-0 h-180 pointer-events-none z-0 ">
         <Image
           src="/heroVector.png"
           alt="Hero Vector"
@@ -169,6 +175,58 @@ function Page() {
           priority
         />
       </div>
+
+      {modal && (
+        <div className="fixed inset-0 z-50 flex flex-col md:flex-row items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="my-4 md:my-0 w-full h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0">
+            <p className="font-sans font-bold text-[13px] leading-6.25 text-center">
+              Early bird discount: 20% off ₦120,000
+            </p>
+            <p className="font-sans font-normal text-[13px] leading-6.25 text-center">
+              (Valid until mid-February)
+            </p>
+            <button
+              onClick={() => {
+                setModal(false);
+                setPaymentPlan("full");
+                handleSubmission();
+              }}
+              disabled={loading}
+              className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4">
+              FULL PAYMENT
+            </button>
+          </div>
+
+          <div className="my-4 md:my-0 w-full  h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0">
+            <div className="mx-2">
+              <p className="font-sans font-bold text-[13px] leading-6.25 text-center">
+                <span className="font-normal">maximum of two</span> (2)
+                instalments -
+                <span className="font-normal">
+                  To be fully paid before the training start date (30th March,
+                  2026)
+                </span>
+                {"    "}
+              </p>
+
+              <p className="font-sans font-bold text-[13px] leading-6.25 text-center uppercase">
+                Please note: Instalment payments are not applicable to early
+                bird registration
+              </p>
+            </div>
+
+            <button
+              onClick={() => {
+                setModal(false);
+                setPaymentPlan("imstalment");
+                handleSubmission();
+              }}
+              className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-[#292663] hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 border-[0.5px] border-[#292663]">
+              INSTALMENT PAYMENT
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

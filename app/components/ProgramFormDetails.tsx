@@ -8,17 +8,19 @@ type ProgramFormTypes = {
   body: string;
 };
 
-const newData = [{
-  // topic: string;
-  // description: string;
-  // location: string;
-  // start_date: string;
-  // start_time: string;
-  // id: string | number;
-}]
+const newData = [
+  {
+    // topic: string;
+    // description: string;
+    // location: string;
+    // start_date: string;
+    // start_time: string;
+    // id: string | number;
+  },
+];
 
 const card = [
-  { title: "Training Start Date", body: "March 30, 2026" },
+  { title: "Training Start Date", body: "Apr 8, 2026" },
   { title: "Duration", body: "6 weeks" },
   { title: "Format", body: "Instructor-led training with practical sessions" },
   {
@@ -67,8 +69,10 @@ function ProgramFormDetails() {
 
             <ul className="block md:hidden list-disc list-inside">
               <li className="font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663]  max-w-4xl font-sans text-left">
-                Access to recorded course materials via our LMS Assigned tasks
-                for each module
+                Access to recorded course materials via our LMS
+              </li>
+              <li className="font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663]  max-w-4xl font-sans text-left">
+                Assigned tasks for each module
               </li>
               <li className="font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] tmax-w-4xl font-sans text-left">
                 Weekly weekend virtual sessions with the facilitator for review
@@ -152,7 +156,7 @@ function ProgramFormDetails() {
                   <span className="font-bold">Installment option:</span>{" "}
                    Allowed, with a maximum of three{" "}
                   <span className="font-bold">(3) installments</span> - To be
-                  fully paid before the training start date (30th March, 2026)
+                  fully paid before the training start date (April 8th, 2026)
                 </li>
               </ul>
 
