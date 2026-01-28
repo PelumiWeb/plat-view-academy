@@ -154,8 +154,8 @@ function ProgramFormDetails() {
                 </li>
                 <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
                   <span className="font-bold">Installment option:</span>{" "}
-                   Allowed, with a maximum of three{" "}
-                  <span className="font-bold">(3) installments</span> - To be
+                   Allowed, with a maximum of two{" "}
+                  <span className="font-bold">(2) installments</span> - To be
                   fully paid before the training start date (April 8th, 2026)
                 </li>
               </ul>
