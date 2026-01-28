@@ -245,7 +245,7 @@ function Page() {
                 <span className="font-normal">maximum of two</span> (2)
                 instalments -
                 <span className="font-normal">
-                  To be fully paid before the training start date (30th March,
+                  To be fully paid before the training start date (8th April,
                   2026)
                 </span>
                 {"    "}
