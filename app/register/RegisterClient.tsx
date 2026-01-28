@@ -225,7 +225,7 @@ function RegisterClient() {
               Early bird discount: 20% off ₦120,000
             </p>
             <p className="font-sans font-normal text-[13px] leading-6.25 text-center">
-              (Valid until mid-February)
+              (Valid until end of February)
             </p>
             <button
               onClick={() => {

@@ -62,9 +62,10 @@ function ProgramFormDetails() {
             </p>
 
             <p className="hidden md:block font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] text-center max-w-4xl font-sans">
-              Access to recorded course materials via our LMS / Assigned tasks for
-              each module / Weekly weekend virtual sessions with the facilitator
-              for review / Learning reinforcement / Q&A / clarification
+              Access to recorded course materials via our LMS / Assigned tasks
+              for each module / Weekly weekend virtual sessions with the
+              facilitator for review / Learning reinforcement / Q&A /
+              clarification
             </p>
 
             <ul className="block md:hidden list-disc list-inside">
@@ -105,13 +106,16 @@ function ProgramFormDetails() {
                 </p>
                 <p className="font-sans  font-normal text-sm sm:text-base lg:text-[14px] text-[#292663] text-center -mt-2 md:mt-0 hidden md:block">
                   Free soft skills training with a certificate of completion
-                  from an experienced facilitator Free CV / cover letter
+                  from an experienced facilitator / Free CV / cover letter
                   training from an experienced HR professional
                 </p>
                 <ul className="list-disc list-inside space-y-2 block md:hidden text-left w-full ml-2">
                   <li className="font-sans  font-normal text-sm sm:text-base  text-[#292663]  ">
                     Free soft skills training with a certificate of completion
-                    from an experienced facilitator Free CV
+                    from an experienced facilitator
+                  </li>
+                  <li className="font-sans  font-normal text-sm sm:text-base  text-[#292663]  ">
+                    Free CV
                   </li>
                   <li className="font-sans  font-normal text-sm  text-[#292663]  ">
                     Cover letter training from an experienced HR professional
@@ -150,7 +154,7 @@ function ProgramFormDetails() {
                   <span className="font-bold">
                     Early bird discount: 20% off ₦120,000
                   </span>{" "}
-                  (Valid until mid-February)
+                  (Valid until end of February)
                 </li>
                 <li className="font-normal font-sans text-sm sm:text-base lg:text-[18px] leading-relaxed lg:leading-8.25 text-[#292663] w-full lg:w-[85%] mx-auto lg:mx-0 pl-2">
                   <span className="font-bold">Installment option:</span>{" "}
