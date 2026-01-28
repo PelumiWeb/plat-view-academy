@@ -47,7 +47,7 @@ function Page() {
       };
 
       const response = await post(
-        "https://platview-backend.onrender.com/api/registration/webinar",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinar`,
         requestBody
       );
       toast.success("Registration successful!");
@@ -145,11 +145,11 @@ function Page() {
             className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? "LOADING..." : "CONTINUE"}
           </button>
-          <button className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors"
-          onClick={() => {
-            route.back()
-          }}
-          >
+          <button
+            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors"
+            onClick={() => {
+              route.back();
+            }}>
             BACK
           </button>
         </div>
