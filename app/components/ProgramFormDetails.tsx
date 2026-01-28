@@ -62,7 +62,7 @@ function ProgramFormDetails() {
             </p>
 
             <p className="hidden md:block font-bold text-sm sm:text-lg lg:text-[20px] leading-relaxed text-[#292663] text-center max-w-4xl font-sans">
-              Access to recorded course materials via our LMS Assigned tasks for
+              Access to recorded course materials via our LMS / Assigned tasks for
               each module / Weekly weekend virtual sessions with the facilitator
               for review / Learning reinforcement / Q&A / clarification
             </p>
