@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { useFetch } from "../useFetch";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function Page() {
   const [formData, setFormData] = useState({
@@ -14,10 +14,19 @@ function Page() {
   });
   const [modal, setModal] = useState(false);
   const [paymentPlan, setPaymentPlan] = useState<"full" | "imstalment">("full");
+  const [promoCode, setPromoCode] = useState<string | null>(null);
 
   const { loading, post } = useFetch();
-
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Extract promo code from URL on component mount
+  useEffect(() => {
+    const code = searchParams.get("promoCode");
+    if (code) {
+      setPromoCode(code);
+    }
+  }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,11 +64,22 @@ function Page() {
 
       console.log(response, "response");
 
+      // Prepare payment initialization payload
+      const paymentPayload: {
+        registrationId: number;
+        promoCode?: string;
+      } = {
+        registrationId: response.data.registrationId,
+      };
+
+      // Add promo code if it exists
+      if (promoCode) {
+        paymentPayload.promoCode = promoCode;
+      }
+
       const paymentResponse = await post(
         "https://platview-backend.onrender.com/api/payment/initialize",
-        {
-          registrationId: response.data.registrationId,
-        }
+        paymentPayload
       );
 
       if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
@@ -97,6 +117,28 @@ function Page() {
             Hero Cybersecurity Program
           </p>
         </div>
+
+        {/* Promo Code Badge */}
+        {promoCode && (
+          <div className="w-full flex justify-center mb-4">
+            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <span className="font-semibold text-sm">
+                Promo code applied: {promoCode}
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Form Section */}
         <div className="mt-4 sm:mt-6 lg:mt-8 w-full">
@@ -180,7 +222,7 @@ function Page() {
         <div className="fixed inset-0 z-50 flex flex-col md:flex-row items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="my-4 md:my-0 w-full h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0">
             <p className="font-sans font-bold text-[13px] leading-6.25 text-center">
-              Early bird discount: 20% off ₦120,000
+              Early bird discount: 20% off ₦120,000
             </p>
             <p className="font-sans font-normal text-[13px] leading-6.25 text-center">
               (Valid until mid-February)
