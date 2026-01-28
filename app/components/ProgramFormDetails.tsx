@@ -20,7 +20,7 @@ const newData = [
 ];
 
 const card = [
-  { title: "Training Start Date", body: "Apr 8, 2026" },
+  { title: "Training Start Date", body: "April 8, 2026" },
   { title: "Duration", body: "6 weeks" },
   { title: "Format", body: "Instructor-led training with practical sessions" },
   {
