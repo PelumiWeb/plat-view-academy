@@ -78,7 +78,7 @@ function RegisterClient() {
       }
 
       const paymentResponse = await post(
-        "https://platview-backend.onrender.com/api/payment/initialize",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/payment/initialize`,
         paymentPayload
       );
 
