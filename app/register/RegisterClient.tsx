@@ -50,7 +50,7 @@ function RegisterClient() {
       console.log(requestBody);
 
       const response = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/course`,
+        `https://platview-backend.onrender.com/api/registration/course`,
         requestBody
       );
       toast.success("Registration successful!");
@@ -67,7 +67,7 @@ function RegisterClient() {
       };
 
       const paymentResponse = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/payment/initialize`,
+        `https://platview-backend.onrender.com/api/payment/initialize`,
         paymentPayload
       );
 

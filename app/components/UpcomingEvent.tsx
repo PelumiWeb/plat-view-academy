@@ -175,7 +175,7 @@ function UpcomingEvent() {
   const fetchEvent = async () => {
     try {
       const users = await get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinars`
+        `https://platview-backend.onrender.com/api/registration/webinars`
       );
       console.log(users);
     } catch (err) {
