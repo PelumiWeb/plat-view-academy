@@ -63,7 +63,8 @@ function RegisterClient() {
         promoCode?: string;
       } = {
         registrationId: response.data.registrationId,
-        ...(now <= promoExpiryDate && { promoCode: "EARLYBIRD" }),
+        ...(now <= promoExpiryDate &&
+          paymentPlan === "full" && { promoCode: "EARLYBIRD" }),
       };
 
       const paymentResponse = await post(

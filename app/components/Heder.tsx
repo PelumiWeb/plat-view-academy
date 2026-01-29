@@ -35,7 +35,7 @@ const Header = () => {
         {/* Logo */}
         <div
           className="flex items-center shrink-0 cursor-pointer"
-          onClick={() => router.push("www.platview.com")}>
+          onClick={() => router.replace("www.platview.com")}>
           <Image
             src="/PlatviewLogo.png"
             alt="Platview Logo"
