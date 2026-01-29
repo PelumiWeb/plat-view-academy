@@ -5,6 +5,10 @@ import { toast } from "react-hot-toast";
 import { useFetch } from "../useFetch";
 import { useRouter, useSearchParams } from "next/navigation";
 
+const promoExpiryDate = new Date("2026-02-28");
+
+const now = new Date();
+
 function RegisterClient() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -13,21 +17,8 @@ function RegisterClient() {
     email: "",
   });
   const [modal, setModal] = useState(false);
-  const [paymentPlan, setPaymentPlan] = useState<"full" | "imstalment">("full");
-  const [promoCode, setPromoCode] = useState<string | null>(null);
-
   const { loading, post } = useFetch();
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // Extract promo code from URL on component mount
-  useEffect(() => {
-    const code = searchParams.get("promoCode");
-    if (code) {
-      setPromoCode(code);
-    }
-  }, [searchParams]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -45,7 +36,7 @@ function RegisterClient() {
     setModal(true);
   };
 
-  const handleSubmission = async () => {
+  const handleSubmission = async (paymentPlan: "full" | "instalment") => {
     try {
       const requestBody = {
         email: formData.email,
@@ -56,13 +47,15 @@ function RegisterClient() {
         paymentPlan: paymentPlan === "full" ? "full" : "installment_2",
       };
 
+      console.log(requestBody);
+
       const response = await post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/registration/course`,
         requestBody
       );
       toast.success("Registration successful!");
 
-      console.log(response, "response");
+      // console.log(response, "response");
 
       // Prepare payment initialization payload
       const paymentPayload: {
@@ -70,12 +63,8 @@ function RegisterClient() {
         promoCode?: string;
       } = {
         registrationId: response.data.registrationId,
+        ...(now <= promoExpiryDate && { promoCode: "EARLYBIRD" }),
       };
-
-      // Add promo code if it exists
-      if (promoCode) {
-        paymentPayload.promoCode = promoCode;
-      }
 
       const paymentResponse = await post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/payment/initialize`,
@@ -117,28 +106,6 @@ function RegisterClient() {
             Hero Cybersecurity Program
           </p>
         </div>
-
-        {/* Promo Code Badge */}
-        {promoCode && (
-          <div className="w-full flex justify-center mb-4">
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span className="font-semibold text-sm">
-                Promo code applied: {promoCode}
-              </span>
-            </div>
-          </div>
-        )}
 
         {/* Form Section */}
         <div className="mt-4 sm:mt-6 lg:mt-8 w-full">
@@ -219,29 +186,30 @@ function RegisterClient() {
       </div>
 
       {modal && (
-        <div className="fixed inset-0 z-50 flex flex-col md:flex-row items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="my-4 md:my-0 w-full h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0">
-            <p className="font-sans font-bold text-[13px] leading-6.25 text-center">
+        <div
+          className="fixed inset-0 z-50 flex flex-col md:flex-row items-center justify-center bg-black/50 backdrop-blur-sm p-4 "
+          onClick={() => setModal(false)}>
+          <div className="my-4 md:my-0 w-full h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0 relative">
+            <p className="font-sans font-bold text-[13px] leading-6.25 text-center text-[#292663]">
               Early bird discount: 20% off ₦120,000
             </p>
-            <p className="font-sans font-normal text-[13px] leading-6.25 text-center">
+            <p className="font-sans font-normal text-[13px] leading-6.25 text-center text-[#292663]">
               (Valid until end of February)
             </p>
             <button
               onClick={() => {
                 setModal(false);
-                setPaymentPlan("full");
-                handleSubmission();
+                handleSubmission("full");
               }}
               disabled={loading}
-              className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4">
+              className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 absolute bottom-[15%]">
               FULL PAYMENT
             </button>
           </div>
 
-          <div className="my-4 md:my-0 w-full  h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0">
-            <div className="mx-2">
-              <p className="font-sans font-bold text-[13px] leading-6.25 text-center">
+          <div className="my-4 md:my-0 w-full  h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0 relative">
+            <div className="mx-2 md:mb-10">
+              <p className="font-sans font-bold text-[13px] leading-6.25 text-center text-[#292663]">
                 <span className="font-normal">maximum of two</span> (2)
                 instalments -
                 <span className="font-normal">
@@ -251,7 +219,7 @@ function RegisterClient() {
                 {"    "}
               </p>
 
-              <p className="font-sans font-bold text-[13px] leading-6.25 text-center uppercase">
+              <p className="font-sans font-bold text-[13px] leading-6.25 text-center uppercase text-[#292663]">
                 Please note: Instalment payments are not applicable to early
                 bird registration
               </p>
@@ -260,10 +228,10 @@ function RegisterClient() {
             <button
               onClick={() => {
                 setModal(false);
-                setPaymentPlan("imstalment");
-                handleSubmission();
+
+                handleSubmission("instalment");
               }}
-              className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-[#292663] hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 border-[0.5px] border-[#292663]">
+              className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-[#292663] hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 border-[0.5px] border-[#292663] absolute bottom-[15%]">
               INSTALMENT PAYMENT
             </button>
           </div>
