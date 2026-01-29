@@ -32,7 +32,7 @@ function Page() {
 
   const handleContinue = async () => {
     // Validation
-    if (!formData.firstName || !formData.phone) {
+    if (!formData.firstName || !formData.phone || !formData.email) {
       toast.error("Please fill in all required fields");
       return;
     }
