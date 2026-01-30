@@ -104,7 +104,22 @@ function Page() {
                 placeholder="First name *"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
+                className="
+  border border-[#D6DDEF]
+  bg-white
+  focus:bg-white
+  outline-none
+  w-full sm:w-96.25
+  h-12 sm:h-14 lg:h-15
+  rounded-[10px]
+  font-mono
+  text-base sm:text-lg lg:text-[20px]
+  text-[#5D6978]
+  px-4
+  focus:border-[#0022D4]
+  transition-colors
+  appearance-none
+"
               />
               <input
                 type="text"
@@ -112,7 +127,22 @@ function Page() {
                 placeholder="Last name"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
+                className="
+                border border-[#D6DDEF]
+                bg-white
+                focus:bg-white
+                outline-none
+                w-full sm:w-96.25
+                h-12 sm:h-14 lg:h-15
+                rounded-[10px]
+                font-mono
+                text-base sm:text-lg lg:text-[20px]
+                text-[#5D6978]
+                px-4
+                focus:border-[#0022D4]
+                transition-colors
+                appearance-none
+              "
               />
             </div>
 
@@ -123,7 +153,22 @@ function Page() {
                 placeholder="Phone Number *"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
+                className="
+                border border-[#D6DDEF]
+                bg-white
+                focus:bg-white
+                outline-none
+                w-full sm:w-96.25
+                h-12 sm:h-14 lg:h-15
+                rounded-[10px]
+                font-mono
+                text-base sm:text-lg lg:text-[20px]
+                text-[#5D6978]
+                px-4
+                focus:border-[#0022D4]
+                transition-colors
+                appearance-none
+              "
               />
               <input
                 type="email"
@@ -131,7 +176,22 @@ function Page() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
+                className="
+                border border-[#D6DDEF]
+                bg-white
+                focus:bg-white
+                outline-none
+                w-full sm:w-96.25
+                h-12 sm:h-14 lg:h-15
+                rounded-[10px]
+                font-mono
+                text-base sm:text-lg lg:text-[20px]
+                text-[#5D6978]
+                px-4
+                focus:border-[#0022D4]
+                transition-colors
+                appearance-none
+              "
               />
             </div>
           </div>
