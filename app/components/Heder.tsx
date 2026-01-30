@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const navigation = [
-  { name: "Home", href: "#home" },
-  { name: "Academy", href: "#academy" },
+  { name: "Home", href: "https://www.platview.com" },
+  { name: "Academy", href: "/" },
   { name: "Solutions", href: "#program" },
   { name: "Why", href: "#why" },
 ];
@@ -14,18 +14,27 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
 
-  const handleNavClick = (e: any, href: any) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
 
+    // External link
+    if (href.startsWith("http")) {
+      window.location.href = href;
+      return;
+    }
+
+    // Anchor link
     if (href.startsWith("#")) {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    } else {
-      router.push(href);
+      return;
     }
+
+    // Internal route
+    router.push(href);
   };
 
   return (
@@ -35,7 +44,7 @@ const Header = () => {
         {/* Logo */}
         <div
           className="flex items-center shrink-0 cursor-pointer"
-          onClick={() => router.replace("www.platview.com")}>
+          onClick={() => (window.location.href = "https://www.platview.com")}>
           <Image
             src="/PlatviewLogo.png"
             alt="Platview Logo"
