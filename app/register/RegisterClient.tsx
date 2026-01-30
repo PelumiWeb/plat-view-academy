@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useFetch } from "../useFetch";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const promoExpiryDate = new Date("2026-02-28");
-
 const now = new Date();
 
 function RegisterClient() {
@@ -17,18 +16,15 @@ function RegisterClient() {
     email: "",
   });
   const [modal, setModal] = useState(false);
-  const { loading, post } = useFetch();
+  const { loading, post } = useFetch(); // This 'loading' will trigger our UI
   const router = useRouter();
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleContinue = async () => {
-    // Validation
     if (!formData.firstName || !formData.phone || !formData.email) {
       toast.error("Please fill in all required fields");
       return;
@@ -47,21 +43,14 @@ function RegisterClient() {
         paymentPlan: paymentPlan === "full" ? "full" : "installment_2",
       };
 
-      console.log(requestBody);
-
       const response = await post(
         `https://platview-backend.onrender.com/api/registration/course`,
         requestBody
       );
+
       toast.success("Registration successful!");
 
-      // console.log(response, "response");
-
-      // Prepare payment initialization payload
-      const paymentPayload: {
-        registrationId: number;
-        promoCode?: string;
-      } = {
+      const paymentPayload = {
         registrationId: response.data.registrationId,
         ...(now <= promoExpiryDate &&
           paymentPlan === "full" && { promoCode: "EARLYBIRD" }),
@@ -74,31 +63,33 @@ function RegisterClient() {
 
       if (paymentResponse.success && paymentResponse.data.authorizationUrl) {
         toast.success("Redirecting to payment...");
-
-        // Redirect to Paystack payment page
         window.location.href = paymentResponse.data.authorizationUrl;
       } else {
-        toast.error("Payment initialization failed. Please try again.");
+        toast.error("Payment initialization failed.");
       }
-
-      // Reset form after successful submission
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-      });
     } catch (err) {
-      toast.error(
-        err instanceof Error
-          ? err.message
-          : "Registration failed. Please try again."
-      );
+      toast.error(err instanceof Error ? err.message : "An error occurred");
     }
   };
 
   return (
     <div className="min-h-[calc(100vh-50px)] w-full flex justify-center items-center relative flex-col px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
+      {/* --- LOADING MODAL --- */}
+      {loading && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl flex flex-col items-center border border-gray-100">
+            {/* Custom Spinner */}
+            <div className="w-12 h-12 border-4 border-[#0022D4]/20 border-t-[#0022D4] rounded-full animate-spin mb-4"></div>
+            <p className="text-[#292663] font-bold text-lg animate-pulse">
+              Processing Request...
+            </p>
+            <p className="text-gray-500 text-sm mt-1">
+              Please do not refresh the page
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col w-full max-w-4xl mt-0 lg:-mt-[5%] z-10">
         {/* Header */}
         <div className="w-full flex justify-center items-center mb-6 sm:mb-8">
@@ -113,9 +104,7 @@ function RegisterClient() {
           <p className="font-semibold text-[#292663] text-base sm:text-lg lg:text-[20px] leading-relaxed lg:leading-8.75 mb-4">
             Info about you:
           </p>
-
           <div className="space-y-3 sm:space-y-4">
-            {/* First Name & Last Name */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2">
               <input
                 type="text"
@@ -123,7 +112,7 @@ function RegisterClient() {
                 placeholder="First name *"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] px-4"
               />
               <input
                 type="text"
@@ -131,11 +120,9 @@ function RegisterClient() {
                 placeholder="Last name"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] px-4"
               />
             </div>
-
-            {/* Phone Number & Email */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2">
               <input
                 type="tel"
@@ -143,7 +130,7 @@ function RegisterClient() {
                 placeholder="Phone Number *"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] px-4"
               />
               <input
                 type="email"
@@ -151,25 +138,23 @@ function RegisterClient() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] px-4"
               />
             </div>
           </div>
         </div>
 
-        {/* Buttons */}
+        {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto sm:mx-auto lg:w-[45%] justify-between gap-3 sm:gap-4 my-6 sm:my-8">
           <button
             onClick={handleContinue}
             disabled={loading}
-            className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
+            className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-white uppercase hover:bg-opacity-90 disabled:opacity-50">
             {loading ? "LOADING..." : "CONTINUE"}
           </button>
           <button
-            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors"
-            onClick={() => {
-              router.back();
-            }}>
+            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-[#292663] border border-[#292663]"
+            onClick={() => router.back()}>
             BACK
           </button>
         </div>
@@ -186,53 +171,41 @@ function RegisterClient() {
         />
       </div>
 
+      {/* Plan Selection Modal */}
       {modal && (
         <div
           className="fixed inset-0 z-50 flex flex-col md:flex-row items-center justify-center bg-black/50 backdrop-blur-sm p-4 "
           onClick={() => setModal(false)}>
-          <div className="my-4 md:my-0 w-full h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0 relative">
-            <p className="font-sans font-bold text-[13px] leading-6.25 text-center text-[#292663]">
+          <div
+            className="my-4 md:my-0 w-full md:h-77.25 bg-[#F0F0FF] rounded-xl md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 p-6 relative"
+            onClick={(e) => e.stopPropagation()}>
+            <p className="font-sans font-bold text-[13px] text-[#292663]">
               Early bird discount: 20% off ₦120,000
             </p>
-            <p className="font-sans font-normal text-[13px] leading-6.25 text-center text-[#292663]">
-              (Valid until end of February)
-            </p>
+            <p className="text-[11px] mb-4">(Valid until end of February)</p>
             <button
               onClick={() => {
                 setModal(false);
                 handleSubmission("full");
               }}
-              disabled={loading}
-              className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 absolute bottom-[15%]">
+              className="bg-[#0022D4] w-full py-3 rounded-lg font-bold text-white text-[14px]">
               FULL PAYMENT
             </button>
           </div>
 
-          <div className="my-4 md:my-0 w-full  h-full md:h-77.25 bg-[#F0F0FF] rounded-none md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 px-4 md:px-0 relative">
-            <div className="mx-2 md:mb-10">
-              <p className="font-sans font-bold text-[13px] leading-6.25 text-center text-[#292663]">
-                <span className="font-normal">maximum of two</span> (2)
-                instalments -
-                <span className="font-normal">
-                  To be fully paid before the training start date (8th April,
-                  2026)
-                </span>
-                {"    "}
-              </p>
-
-              <p className="font-sans font-bold text-[13px] leading-6.25 text-center uppercase text-[#292663]">
-                Please note: Instalment payments are not applicable to early
-                bird registration
-              </p>
-            </div>
-
+          <div
+            className="my-4 md:my-0 w-full md:h-77.25 bg-[#F0F0FF] rounded-xl md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 p-6 relative"
+            onClick={(e) => e.stopPropagation()}>
+            <p className="font-sans font-bold text-[13px] text-center text-[#292663] mb-4">
+              Instalment payments available (Max 2 parts). Not valid for early
+              bird.
+            </p>
             <button
               onClick={() => {
                 setModal(false);
-
                 handleSubmission("instalment");
               }}
-              className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-10.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[15px] leading-tight lg:leading-4.5 uppercase text-[#292663] hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed mt-4 border-[0.5px] border-[#292663] absolute bottom-[15%]">
+              className="bg-white border border-[#292663] w-full py-3 rounded-lg font-bold text-[#292663] text-[14px]">
               INSTALMENT PAYMENT
             </button>
           </div>

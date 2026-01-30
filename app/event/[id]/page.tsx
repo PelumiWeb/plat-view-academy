@@ -10,7 +10,6 @@ function Page() {
   const route = useRouter();
   const params: any = useParams();
 
-  console.log(params, "here is the route");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -50,15 +49,17 @@ function Page() {
         `https://platview-backend.onrender.com/api/registration/webinar`,
         requestBody
       );
-      toast.success("Registration successful!");
 
-      // Reset form after successful submission
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-      });
+      if (response) {
+        toast.success("Registration successful!");
+        // Reset form after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+        });
+      }
     } catch (err) {
       toast.error("Registration failed. Please try again.");
     }
@@ -66,6 +67,20 @@ function Page() {
 
   return (
     <div className="min-h-[calc(100vh-50px)] w-full flex justify-center items-center relative flex-col px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
+      {/* --- LOADING MODAL --- */}
+      {loading && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-[2px]">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl flex flex-col items-center border border-gray-100 mx-4">
+            {/* Spinner */}
+            <div className="w-12 h-12 border-4 border-[#0022D4]/20 border-t-[#0022D4] rounded-full animate-spin mb-4"></div>
+            <p className="text-[#292663] font-bold text-lg animate-pulse">
+              Registering...
+            </p>
+            <p className="text-gray-500 text-sm mt-1">Please wait a moment</p>
+          </div>
+        </div>
+      )}
+
       <div className="flex flex-col w-full max-w-4xl mt-0 lg:-mt-[5%] z-10">
         {/* Header */}
         <div className="w-full flex justify-center items-center mb-6 sm:mb-8">
@@ -82,7 +97,6 @@ function Page() {
           </p>
 
           <div className="space-y-3 sm:space-y-4">
-            {/* First Name & Last Name */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2">
               <input
                 type="text"
@@ -90,7 +104,7 @@ function Page() {
                 placeholder="First name *"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
               />
               <input
                 type="text"
@@ -98,11 +112,10 @@ function Page() {
                 placeholder="Last name"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
               />
             </div>
 
-            {/* Phone Number & Email */}
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-2">
               <input
                 type="tel"
@@ -110,7 +123,7 @@ function Page() {
                 placeholder="Phone Number *"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
               />
               <input
                 type="email"
@@ -118,22 +131,9 @@ function Page() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors"
+                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] px-4 focus:border-[#0022D4] transition-colors"
               />
             </div>
-
-            {/* <div className="flex w-full justify-center items-center">
-              <select
-                name="webinarId"
-                value={formData.webinarId}
-                onChange={handleInputChange}
-                className="border border-[#D6DDEF] bg-white outline-none w-full sm:w-96.25 h-12 sm:h-14 lg:h-15 rounded-[10px] font-mono text-base sm:text-lg lg:text-[20px] text-[#5D6978] leading-relaxed lg:leading-8.75 px-3 sm:px-4 focus:border-[#0022D4] transition-colors">
-                <option value="">Select Event</option>
-                <option value="1">Event 1</option>
-                <option value="2">Event 2</option>
-                <option value="3">Event 3</option>
-              </select>
-            </div> */}
           </div>
         </div>
 
@@ -142,14 +142,12 @@ function Page() {
           <button
             onClick={handleContinue}
             disabled={loading}
-            className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed">
+            className="bg-[#0022D4] w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] text-white hover:bg-opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed uppercase">
             {loading ? "LOADING..." : "CONTINUE"}
           </button>
           <button
-            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] leading-tight lg:leading-4.5 uppercase text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors"
-            onClick={() => {
-              route.back();
-            }}>
+            className="bg-white w-full sm:w-54.25 h-12 sm:h-14 lg:h-15.5 rounded-[7px] font-bold text-base sm:text-lg lg:text-[18px] text-[#292663] border-[0.5px] border-[#292663] hover:bg-gray-50 transition-colors uppercase"
+            onClick={() => route.back()}>
             BACK
           </button>
         </div>
