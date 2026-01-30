@@ -66,7 +66,31 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen w-screen bg-white ">
           <Header />
           <div className="">{children}</div>
-          <Toaster position="top-right" />
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              duration: 4000,
+              style: {
+                background: "#0f172a", 
+                color: "#f8fafc", 
+                padding: "14px 18px",
+                fontSize: "14px",
+                borderRadius: "10px",
+                boxShadow:
+                  "0 10px 25px -5px rgba(0,0,0,0.3), 0 8px 10px -6px rgba(0,0,0,0.2)",
+              },
+              success: {
+                style: {
+                  background: "#16a34a", 
+                },
+              },
+              error: {
+                style: {
+                  background: "#dc2626",
+                },
+              },
+            }}
+          />
         </div>
       </body>
     </html>
