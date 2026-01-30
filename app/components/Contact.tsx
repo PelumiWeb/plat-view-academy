@@ -193,7 +193,7 @@ function Contact() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 placeholder="First Name"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600  w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="text"
@@ -201,7 +201,7 @@ function Contact() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 placeholder="Last Name"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600 w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
             </div>
 
@@ -213,7 +213,7 @@ function Contact() {
                 value={formData.jobTitle}
                 onChange={handleInputChange}
                 placeholder="Job Title"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600  w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="text"
@@ -221,7 +221,7 @@ function Contact() {
                 value={formData.company}
                 onChange={handleInputChange}
                 placeholder="Company"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600  w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
             </div>
 
@@ -233,7 +233,7 @@ function Contact() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Email"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600 w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
               <input
                 type="tel"
@@ -241,7 +241,7 @@ function Contact() {
                 value={formData.phone}
                 onChange={handleInputChange}
                 placeholder="Phone"
-                className="bg-white text-black placeholder:text-[#0000004D] w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
+                className="bg-white text-black placeholder:text-gray-600  w-full sm:w-63 p-3 sm:p-4 border-none cursor-pointer outline-none rounded shadow-sm"
               />
             </div>
 
@@ -251,7 +251,7 @@ function Contact() {
               value={formData.message}
               onChange={handleInputChange}
               placeholder="Message"
-              className="bg-white text-black placeholder:text-[#0000004D] p-3 sm:p-4 border-none cursor-pointer w-full  h-32 sm:h-36 lg:h-41 outline-none rounded shadow-sm resize-none"
+              className="bg-white text-black placeholder:text-gray-600  p-3 sm:p-4 border-none cursor-pointer w-full  h-32 sm:h-36 lg:h-41 outline-none rounded shadow-sm resize-none"
             />
 
             {/* Submit Button */}
