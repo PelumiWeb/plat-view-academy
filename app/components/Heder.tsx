@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const navigation = [
-  { name: "Home", href: "https://www.platview.com" },
+  { name: "Home", href: "https://platview.com" },
   { name: "Academy", href: "/" },
   { name: "Solutions", href: "#program" },
   { name: "Why", href: "#why" },
@@ -44,7 +44,7 @@ const Header = () => {
         {/* Logo */}
         <div
           className="flex items-center shrink-0 cursor-pointer"
-          onClick={() => (window.location.href = "https://www.platview.com")}>
+          onClick={() => (window.location.href = "https://platview.com")}>
           <Image
             src="/PlatviewLogo.png"
             alt="Platview Logo"
