@@ -44,7 +44,7 @@ function RegisterClient() {
       };
 
       const response = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/course`,
+        `https://platview-backend.onrender.com/api/registration/course`,
         requestBody
       );
 
@@ -57,7 +57,7 @@ function RegisterClient() {
       };
 
       const paymentResponse = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/payment/initialize`,
+        `https://platview-backend.onrender.com/api/payment/initialize`,
         paymentPayload
       );
 

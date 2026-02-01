@@ -56,7 +56,7 @@ function Contact() {
       };
 
       const response = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/contact`,
+        `https://platview-backend.onrender.com/api/contact`,
         requestBody
       );
 
