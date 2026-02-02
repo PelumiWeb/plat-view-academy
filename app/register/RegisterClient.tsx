@@ -239,16 +239,29 @@ function RegisterClient() {
           <div
             className="my-4 md:my-0 w-full md:h-77.25 bg-[#F0F0FF] rounded-xl md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 p-6 relative"
             onClick={(e) => e.stopPropagation()}>
-            <p className="font-sans font-bold text-[13px] text-[#292663]">
-              Early bird discount: 20% off ₦120,000
-            </p>
-            <p className="text-[11px] mb-4">(Valid until end of February)</p>
+            <div className="md:mt-10">
+              {now <= promoExpiryDate ? (
+                <p className="font-sans font-bold text-[13px] text-[#292663]">
+                  Early bird discount: 20% off ₦120,000
+                </p>
+              ) : (
+                <p className="font-sans font-bold text-[13px] text-[#292663] mb-4 uppercase">
+                  registration CLOSES 22ND OF April, 2026
+                </p>
+              )}
+              {now <= promoExpiryDate && (
+                <p className="text-[11px] mb-4">
+                  (Valid until end of February)
+                </p>
+              )}
+            </div>
+
             <button
               onClick={() => {
                 setModal(false);
                 handleSubmission("full");
               }}
-              className="bg-[#0022D4] w-full py-3 rounded-lg font-bold text-white text-[14px]">
+              className="bg-[#0022D4] w-full py-3 rounded-lg font-bold text-white text-[14px] mt-6">
               FULL PAYMENT
             </button>
           </div>
@@ -256,9 +269,14 @@ function RegisterClient() {
           <div
             className="my-4 md:my-0 w-full md:h-77.25 bg-[#F0F0FF] rounded-xl md:rounded-[37px] md:w-62 flex flex-col justify-center items-center mx-4 p-6 relative"
             onClick={(e) => e.stopPropagation()}>
-            <p className="font-sans font-bold text-[13px] text-center text-[#292663] mb-4">
-              Instalment payments available (Max 2 parts). Not valid for early
-              bird.
+            <p className="font-sans font-bold  text-center text-[#292663] mb-4 uppercase text-[13px] ">
+              <span className="font-normal"> maximum of two </span> (2)
+              instalments -{" "}
+              <span className="font-normal">
+                To be fully paid before the training start date (8TH April,
+                2026)
+              </span>{" "}
+              1ST PAYMENT (n90,000) AND 2ND PAYMENT (n60,000)
             </p>
             <button
               onClick={() => {
