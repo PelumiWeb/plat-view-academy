@@ -91,8 +91,15 @@ const EventCard = (data: {
             <button
               className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] h-11 sm:h-12 lg:h-[55px] bg-[#0E9547] hover:bg-[#0d7d3c] transition-colors uppercase rounded-[7px] border-none px-6 lg:px-8 text-white font-bold text-sm lg:text-base"
               onClick={() => {
-                const slug = createSlug(data.topic);
-                router.push(`event/${data.id.toString()}?topic=${slug}`);
+                if (data.topic.includes(":")) {
+                  const slug = createSlug(data.topic.split(":")[0]);
+                  router.push(`event/${data.id.toString()}?topic=${slug}`);
+                } else {
+                  const slug = createSlug(
+                    `${data.topic.split(" ")[4]} ${data.topic.split(" ")[5]}`
+                  );
+                  router.push(`event/${data.id.toString()}?topic=${slug}`);
+                }
               }}
               aria-label={`Register for ${data.topic}`}>
               register
@@ -185,7 +192,7 @@ function UpcomingEvent() {
   const fetchEvent = async () => {
     try {
       const users = await get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinars`
+        `https://platview-backend.onrender.com/api/registration/webinars`
       );
       console.log(users);
     } catch (err) {
