@@ -36,15 +36,13 @@ function Page() {
       return;
     }
 
-    const decodedId = atob(params.id);
-
     try {
       const requestBody = {
         email: formData.email,
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
-        webinarId: parseInt(decodedId),
+        webinarId: parseInt(params.id),
       };
 
       const response = await post(
