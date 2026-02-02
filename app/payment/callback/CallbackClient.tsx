@@ -23,7 +23,7 @@ export default function CallbackClient() {
 
       try {
         const verificationResponse = await get(
-          `https://platview-backend.onrender.com/api/payment/verify/${reference}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/payment/verify/${reference}`
         );
 
         if (
