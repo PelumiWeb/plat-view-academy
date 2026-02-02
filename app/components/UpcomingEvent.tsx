@@ -38,6 +38,15 @@ const EventCard = (data: {
   console.log(data.index, "index");
   const router = useRouter();
 
+  const createSlug = (text: string) => {
+    return text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/--+/g, "-") // Replace multiple hyphens with single
+      .trim();
+  };
+
   const date = new Date(data.start_date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -82,10 +91,10 @@ const EventCard = (data: {
             <button
               className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] h-11 sm:h-12 lg:h-[55px] bg-[#0E9547] hover:bg-[#0d7d3c] transition-colors uppercase rounded-[7px] border-none px-6 lg:px-8 text-white font-bold text-sm lg:text-base"
               onClick={() => {
-                // router.push(`event/${data.id}`);
-                router.push(
-                  `event/${data.id}?topic=${encodeURIComponent(data.topic)}`
-                );
+                const encodedId = btoa(data.id.toString()); // Encode ID
+
+                const slug = createSlug(data.topic);
+                router.push(`event/${encodedId}/${slug}`);
               }}
               aria-label={`Register for ${data.topic}`}>
               register
@@ -178,7 +187,7 @@ function UpcomingEvent() {
   const fetchEvent = async () => {
     try {
       const users = await get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinars`
+        `https://platview-backend.onrender.com/api/registration/webinars`
       );
       console.log(users);
     } catch (err) {

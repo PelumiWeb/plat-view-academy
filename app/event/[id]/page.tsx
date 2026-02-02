@@ -36,17 +36,19 @@ function Page() {
       return;
     }
 
+    const decodedId = atob(params.id);
+
     try {
       const requestBody = {
         email: formData.email,
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
-        webinarId: parseInt(params?.id),
+        webinarId: parseInt(decodedId),
       };
 
       const response = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinar`,
+        `https://platview-backend.onrender.com/api/registration/webinar`,
         requestBody
       );
 
