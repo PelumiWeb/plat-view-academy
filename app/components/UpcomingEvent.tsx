@@ -95,9 +95,7 @@ const EventCard = (data: {
                   const slug = createSlug(data.topic.split(":")[0]);
                   router.push(`event/${data.id.toString()}?topic=${slug}`);
                 } else {
-                  const slug = createSlug(
-                    `${data.topic.split(" ")[4]} ${data.topic.split(" ")[5]}`
-                  );
+                  const slug = createSlug(`${data.topic.split(" ")[4]} ${data.topic.split(" ")[5]}`);
                   router.push(`event/${data.id.toString()}?topic=${slug}`);
                 }
               }}
@@ -192,7 +190,7 @@ function UpcomingEvent() {
   const fetchEvent = async () => {
     try {
       const users = await get(
-        `https://platview-backend.onrender.com/api/registration/webinars`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinars`
       );
       console.log(users);
     } catch (err) {
