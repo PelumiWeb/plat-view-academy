@@ -92,7 +92,7 @@ const EventCard = (data: {
               className="w-full sm:w-auto min-w-[140px] sm:min-w-[160px] h-11 sm:h-12 lg:h-[55px] bg-[#0E9547] hover:bg-[#0d7d3c] transition-colors uppercase rounded-[7px] border-none px-6 lg:px-8 text-white font-bold text-sm lg:text-base"
               onClick={() => {
                 const slug = createSlug(data.topic);
-                router.push(`event/${data.id}/${slug}`);
+                router.push(`event/${data.id}?topic=${slug}`);
               }}
               aria-label={`Register for ${data.topic}`}>
               register
