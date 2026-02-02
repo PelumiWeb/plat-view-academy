@@ -36,6 +36,7 @@ function Page() {
       return;
     }
 
+    const decodedId = atob(params.id);
 
     try {
       const requestBody = {
@@ -43,7 +44,7 @@ function Page() {
         firstName: formData.firstName,
         lastName: formData.lastName,
         phone: formData.phone,
-        webinarId: parseInt(params.id),
+        webinarId: parseInt(decodedId),
       };
 
       const response = await post(
