@@ -46,7 +46,7 @@ function Page() {
       };
 
       const response = await post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/registration/webinar`,
+        `https://platview-backend.onrender.com/api/registration/webinar`,
         requestBody
       );
 
